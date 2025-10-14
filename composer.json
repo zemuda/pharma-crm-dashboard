@@ -15,7 +15,9 @@
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
         "laravel/wayfinder": "^0.1.9",
-        "nwidart/laravel-modules": "^12.0"
+        "nwidart/laravel-modules": "*",
+        "spatie/laravel-sluggable": "^3.7",
+        "staudenmeir/laravel-adjacency-list": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -72,6 +74,11 @@
     "extra": {
         "laravel": {
             "dont-discover": []
+        },
+        "merge-plugin": {
+            "include": [
+                "Modules/*/composer.json"
+            ]
         }
     },
     "config": {
