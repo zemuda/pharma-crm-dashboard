@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Activities\Models;
+namespace Modules\Activity\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +10,7 @@ use Modules\Core\Enums\RecurrenceTypeEnum;
 
 // use Modules\Activities\Database\Factories\ActivitiesFactory;
 
-class activities extends Model
+class Activity extends Model
 {
     use HasFactory;
 
