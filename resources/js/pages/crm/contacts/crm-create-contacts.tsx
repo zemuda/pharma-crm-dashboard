@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Card, Col, Container, Form, Row } from 'react-bootstrap';
 import BreadCrumb from '../../../Components/Common/BreadCrumb';
 //Import Flatepicker
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import Flatpickr from 'react-flatpickr';
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import { CKEditor } from '@ckeditor/ckeditor5-react';
+// import Flatpickr from 'react-flatpickr';
 import Select from 'react-select';
 
-import Dropzone from 'react-dropzone';
+// import Dropzone from 'react-dropzone';
 
 //Import Images
 import { Head, Link } from '@inertiajs/react';
@@ -102,7 +102,7 @@ const CreateContact = () => {
                                         <Form.Label className="form-label">
                                             Project Description
                                         </Form.Label>
-                                        <CKEditor
+                                        {/* <CKEditor
                                             editor={ClassicEditor as any}
                                             data="<p>Hello from CKEditor 5!</p>"
                                             onReady={(editor) => {
@@ -111,7 +111,7 @@ const CreateContact = () => {
                                             // onChange={(editor) => {
                                             //     editor.getData();
                                             // }}
-                                        />
+                                        /> */}
                                     </div>
 
                                     <Row>
@@ -172,13 +172,13 @@ const CreateContact = () => {
                                                 >
                                                     Deadline
                                                 </Form.Label>
-                                                <Flatpickr
+                                                {/* <Flatpickr
                                                     className="form-control"
                                                     options={{
                                                         dateFormat: 'd M, Y',
                                                     }}
                                                     placeholder="Enter due date"
-                                                />
+                                                /> */}
                                             </div>
                                         </Col>
                                     </Row>
@@ -196,7 +196,7 @@ const CreateContact = () => {
                                             Add Attached files here.
                                         </p>
 
-                                        <Dropzone
+                                        {/* <Dropzone
                                             onDrop={(acceptedFiles) => {
                                                 handleAcceptedFiles(
                                                     acceptedFiles,
@@ -222,7 +222,7 @@ const CreateContact = () => {
                                                     </div>
                                                 </div>
                                             )}
-                                        </Dropzone>
+                                        </Dropzone> */}
 
                                         <ul
                                             className="list-unstyled mb-0"

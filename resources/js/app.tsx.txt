@@ -16,6 +16,12 @@ const store = configureStore({ reducer: rootReducer, devTools: true });
 // Pre-load glob patterns at module level (runs once)
 const tailwindGlob = import.meta.glob('./tailwind/pages/**/*.tsx');
 const mainGlob = import.meta.glob('./pages/**/*.tsx');
+const modulesGlob = import.meta.glob(
+    '../../Modules/**/resources/js/pages/**/*.tsx',
+);
+// const modulesGlob = import.meta.glob(
+//     '../../Modules/**/Resources/js/Pages/**/*.tsx',
+// );
 
 // Custom resolver with prefix-based resolution
 const resolveComponent = (name: string) => {

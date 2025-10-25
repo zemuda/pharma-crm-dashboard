@@ -1,0 +1,77 @@
+import { wayfinder } from '@laravel/vite-plugin-wayfinder';
+import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
+import fs from 'fs';
+import laravel from 'laravel-vite-plugin';
+import path from 'path';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: [
+                'resources/css/app.css',
+                'resources/js/app.tsx',
+                ...getModuleInputs(),
+            ],
+            ssr: 'resources/js/ssr.tsx',
+            refresh: true,
+        }),
+        react(),
+        tailwindcss(),
+        wayfinder({
+            formVariants: true,
+        }),
+    ],
+    esbuild: {
+        jsx: 'automatic',
+    },
+});
+
+// Function to automatically discover module entry points
+function getModuleInputs() {
+    const modulesPath = path.resolve(__dirname, 'Modules');
+
+    if (!fs.existsSync(modulesPath)) {
+        return [];
+    }
+
+    const inputs: string[] = [];
+    const modules: string[] = fs.readdirSync(modulesPath);
+
+    modules.forEach((module: string) => {
+        // Look for TypeScript entry point first, then JavaScript
+        const tsEntry: string = path.join(
+            modulesPath,
+            module,
+            'Resources/js/app.tsx',
+        );
+        const jsEntry: string = path.join(
+            modulesPath,
+            module,
+            'Resources/js/app.ts',
+        );
+        const jsxEntry: string = path.join(
+            modulesPath,
+            module,
+            'Resources/js/app.jsx',
+        );
+        const jsEntryFallback: string = path.join(
+            modulesPath,
+            module,
+            'Resources/js/app.js',
+        );
+
+        if (fs.existsSync(tsEntry)) {
+            inputs.push(`Modules/${module}/Resources/js/app.tsx`);
+        } else if (fs.existsSync(jsEntry)) {
+            inputs.push(`Modules/${module}/Resources/js/app.ts`);
+        } else if (fs.existsSync(jsxEntry)) {
+            inputs.push(`Modules/${module}/Resources/js/app.jsx`);
+        } else if (fs.existsSync(jsEntryFallback)) {
+            inputs.push(`Modules/${module}/Resources/js/app.js`);
+        }
+    });
+
+    return inputs;
+}

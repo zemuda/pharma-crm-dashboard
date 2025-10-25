@@ -1,0 +1,20 @@
+- Only one ATC code for each route of administration
+- atc codes read more link https://atcddd.fhi.no/atc/structure_and_principles/
+
+Example of different administration forms:
+
+Prednisolone in single ingredient products is given several ATC codes due to different therapeutic use and different formulations.
+A07EA01  Intestinal antiinflammatory agents (enemas and foams)
+C05AA04  Antihemorrhoidals for topical use (suppositories)
+D07AA03  Dermatological preparations (creams, ointments and lotions)
+H02AB06  Corticosteroids for systemic use (tablets, injections)
+R01AD02  Nasal decongestants (nasal sprays/drops)
+S01BA04  Ophthalmologicals (eye drops)
+S02BA03  Otologicals (ear drops)
+
+Classification of combination products (to the top)
+- Pharmaceutical products containing two or more active ingredients are regarded as combinations (incl. combination packages) 
+    and given different ATC codes from plain products containing one active ingredient.  
+- Stereoisomeric mixtures are regarded as plain products.  Medicinal products which in addition to one active ingredient contain auxiliary substances intended 
+    to increase the stability of the product (e.g. vaccines containing small amounts of antibacterials), increase the duration (e.g. depot formulations) 
+    and/or increase the absorption (e.g. different solvents in various dermatologicals) are considered as plain products

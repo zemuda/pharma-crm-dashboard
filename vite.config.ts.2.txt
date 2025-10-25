@@ -1,0 +1,93 @@
+import { wayfinder } from '@laravel/vite-plugin-wayfinder';
+import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
+import fs from 'fs';
+import laravel from 'laravel-vite-plugin';
+import path from 'path';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: [
+                'resources/css/app.css',
+                'resources/js/app.tsx',
+                'resources/scss/themes.scss',
+                ...getModuleInputs(),
+            ],
+            ssr: 'resources/js/ssr.tsx',
+            refresh: [
+                'resources/views/**/*.blade.php',
+                'resources/js/**/*.tsx',
+                'resources/js/**/*.ts',
+                'Modules/**/Resources/views/**/*.blade.php',
+                'Modules/**/Resources/js/**/*.tsx',
+                'Modules/**/Resources/js/**/*.ts',
+            ],
+        }),
+        react(),
+        tailwindcss(),
+        wayfinder({
+            formVariants: true,
+        }),
+    ],
+    esbuild: {
+        jsx: 'automatic',
+    },
+    resolve: {
+        alias: {
+            // Main app aliases - available to modules
+            '@': path.resolve(__dirname, 'resources/js'),
+            '@common': path.resolve(__dirname, 'resources/js/common'),
+            '@Components': path.resolve(__dirname, 'resources/js/Components'),
+            '@hooks': path.resolve(__dirname, 'resources/js/hooks'),
+            '@types': path.resolve(__dirname, 'resources/js/types'),
+            '@slices': path.resolve(__dirname, 'resources/js/slices'),
+            '@utils': path.resolve(__dirname, 'resources/js/utils'),
+            '@layouts': path.resolve(__dirname, 'resources/js/Layouts'),
+
+            // Module aliases
+            '@modules': path.resolve(__dirname, 'Modules'),
+        },
+    },
+    build: {
+        commonjsOptions: {
+            include: [/node_modules/, /Modules/, /resources/],
+        },
+    },
+});
+
+// Function to automatically discover module entry points
+function getModuleInputs(): string[] {
+    const modulesPath = path.resolve(__dirname, 'Modules');
+
+    if (!fs.existsSync(modulesPath)) {
+        return [];
+    }
+
+    const inputs: string[] = [];
+    const modules: string[] = fs.readdirSync(modulesPath);
+
+    modules.forEach((module: string) => {
+        // Look for various possible entry points
+        const possibleEntries = [
+            path.join(modulesPath, module, 'Resources/js/app.tsx'),
+            path.join(modulesPath, module, 'Resources/js/app.ts'),
+            path.join(modulesPath, module, 'Resources/js/app.jsx'),
+            path.join(modulesPath, module, 'Resources/js/app.js'),
+            path.join(modulesPath, module, 'Resources/assets/js/app.tsx'),
+            path.join(modulesPath, module, 'Resources/assets/js/app.js'),
+        ];
+
+        for (const entry of possibleEntries) {
+            if (fs.existsSync(entry)) {
+                const relativePath = path.relative(__dirname, entry);
+                inputs.push(relativePath);
+                console.log(`📦 Added module entry: ${relativePath}`);
+                break;
+            }
+        }
+    });
+
+    return inputs;
+}

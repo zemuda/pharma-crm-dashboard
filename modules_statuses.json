@@ -7,6 +7,7 @@
     "Users": true,
     "Calls": true,
     "Notes": true,
-    "Products": true,
-    "Core": true
+    "Products": false,
+    "Core": true,
+    "Product": true
 }

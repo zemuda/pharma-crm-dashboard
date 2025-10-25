@@ -1,0 +1,296 @@
+// DatabaseSeeder.php or dedicated TherapeuticClassesSeeder.php
+// Ensure ActiveStatus::Active->value is defined or replace with 'Active' string
+use Illuminate\Support\Str;
+
+$therapeuticClasses = [
+    // 1. ANAESTHETICS, PRE- & INTRA-OPERATIVE MEDICINES and MEDICAL GASE
+    ['id' => 1, 'parent_id' => null, 'name' => 'ANAESTHETICS, PRE- & INTRA-OPERATIVE MEDICINES and MEDICAL GASE', 'slug' => 'anaesthetics-pre-intra-operative-medicines-and-medical-gase', 'status' => 'Active'],
+    ['id' => 2, 'parent_id' => 1, 'name' => 'General Anaesthetics', 'slug' => 'general-anaesthetics', 'status' => 'Active'],
+    ['id' => 3, 'parent_id' => 2, 'name' => 'Inhalational medicines', 'slug' => 'inhalational-medicines', 'status' => 'Active'],
+    ['id' => 4, 'parent_id' => 2, 'name' => 'Injectable medicines', 'slug' => 'injectable-medicines', 'status' => 'Active'],
+    ['id' => 5, 'parent_id' => 1, 'name' => 'Local Anaesthetics', 'slug' => 'local-anaesthetics', 'status' => 'Active'],
+    ['id' => 6, 'parent_id' => 1, 'name' => 'Pre-and Intra-Operative Medication and Sedation for Short-Term Procedures and Adjuncts for Spinal and Epidural Anaesthesia', 'slug' => 'pre-and-intra-operative-medication-and-sedation-for-short-term-procedures-and-adjuncts-for-spinal-and-epidural-anaesthesia', 'status' => 'Active'],
+    ['id' => 7, 'parent_id' => 1, 'name' => 'Medical gases', 'slug' => 'medical-gases', 'status' => 'Active'],
+
+    // 2. MUSCLE RELAXANTS (PERIPHERALLY ACTING), CHOLINESTERASE INHIBITORS and ANTICHOLINERGICS
+    ['id' => 8, 'parent_id' => null, 'name' => 'MUSCLE RELAXANTS (PERIPHERALLY ACTING), CHOLINESTERASE INHIBITORS and ANTICHOLINERGICS', 'slug' => 'muscle-relaxants-peripherally-acting-cholinesterase-inhibitors-and-anticholinergics', 'status' => 'Active'],
+    ['id' => 9, 'parent_id' => 8, 'name' => 'Muscle relaxants', 'slug' => 'muscle-relaxants', 'status' => 'Active'],
+    ['id' => 10, 'parent_id' => 8, 'name' => 'Cholinesterase Inhibitors', 'slug' => 'cholinesterase-inhibitors', 'status' => 'Active'],
+    ['id' => 11, 'parent_id' => 8, 'name' => 'Anticholinergics', 'slug' => 'anticholinergics', 'status' => 'Active'],
+
+    // 3. MEDICINES for PAIN and PALLIATIVE CARE
+    ['id' => 12, 'parent_id' => null, 'name' => 'MEDICINES for PAIN and PALLIATIVE CARE', 'slug' => 'medicines-for-pain-and-palliative-care', 'status' => 'Active'],
+    ['id' => 13, 'parent_id' => 12, 'name' => 'Non-Opioids and Non-Steroidal Anti-Inflammatory Medicines (NSAIMs)', 'slug' => 'non-opioids-and-non-steroidal-anti-inflammatory-medicines-nsaims', 'status' => 'Active'],
+    ['id' => 14, 'parent_id' => 12, 'name' => 'Opioid analgesics', 'slug' => 'opioid-analgesics', 'status' => 'Active'],
+    ['id' => 15, 'parent_id' => 12, 'name' => 'Adjuncts for pain Management and Medicines for other Symptoms in Palliative Care', 'slug' => 'adjuncts-for-pain-management-and-medicines-for-other-symptoms-in-palliative-care', 'status' => 'Active'],
+
+    // 4. ANTIALLERGICS and MEDICINES used in ANAPHYLAXIS
+    ['id' => 16, 'parent_id' => null, 'name' => 'ANTIALLERGICS and MEDICINES used in ANAPHYLAXIS', 'slug' => 'antiallergics-and-medicines-used-in-anaphylaxis', 'status' => 'Active'],
+
+    // 5. ANTIDOTES and OTHER SUBSTANCES used in POISONINGS
+    ['id' => 17, 'parent_id' => null, 'name' => 'ANTIDOTES and OTHER SUBSTANCES used in POISONINGS', 'slug' => 'antidotes-and-other-substances-used-in-poisonings', 'status' => 'Active'],
+    ['id' => 18, 'parent_id' => 17, 'name' => 'Non-specific', 'slug' => 'non-specific', 'status' => 'Active'],
+    ['id' => 19, 'parent_id' => 17, 'name' => 'Specific', 'slug' => 'specific', 'status' => 'Active'],
+
+    // 6. ANTICONVULSANTS/ANTIEPILEPTICS
+    ['id' => 20, 'parent_id' => null, 'name' => 'ANTICONVULSANTS/ANTIEPILEPTICS', 'slug' => 'anticonvulsants-antiepileptics', 'status' => 'Active'],
+
+    // 7. ANTI-INFECTIVE MEDICINES
+    ['id' => 21, 'parent_id' => null, 'name' => 'ANTI-INFECTIVE MEDICINES', 'slug' => 'anti-infective-medicines', 'status' => 'Active'],
+    ['id' => 22, 'parent_id' => 21, 'name' => 'Anthelminthics', 'slug' => 'anthelminthics', 'status' => 'Active'],
+    ['id' => 23, 'parent_id' => 22, 'name' => 'Intestinal Anthelminthics', 'slug' => 'intestinal-anthelminthics', 'status' => 'Active'],
+    ['id' => 24, 'parent_id' => 22, 'name' => 'Antifilarials', 'slug' => 'antifilarials', 'status' => 'Active'],
+    ['id' => 25, 'parent_id' => 21, 'name' => 'Antibacterials', 'slug' => 'antibacterials', 'status' => 'Active'],
+    ['id' => 26, 'parent_id' => 25, 'name' => 'Access Group Antibiotics', 'slug' => 'access-group-antibiotics', 'status' => 'Active'],
+    ['id' => 27, 'parent_id' => 25, 'name' => 'Watch Group antibiotics', 'slug' => 'watch-group-antibiotics', 'status' => 'Active'],
+    ['id' => 28, 'parent_id' => 25, 'name' => 'Reserve group antibiotics', 'slug' => 'reserve-group-antibiotics', 'status' => 'Active'],
+    ['id' => 29, 'parent_id' => 25, 'name' => 'Antileprosy medicines', 'slug' => 'antileprosy-medicines', 'status' => 'Active'],
+    ['id' => 30, 'parent_id' => 25, 'name' => 'Antituberculosis medicines', 'slug' => 'antituberculosis-medicines', 'status' => 'Active'],
+    ['id' => 31, 'parent_id' => 30, 'name' => 'Single medicines', 'slug' => 'single-medicines', 'status' => 'Active'],
+    ['id' => 32, 'parent_id' => 30, 'name' => 'Fixed dose combinations (FDCs)', 'slug' => 'fixed-dose-combinations-fdcs', 'status' => 'Active'],
+    ['id' => 33, 'parent_id' => 30, 'name' => 'Medicines for treatment of multi-drug resistant Tuberculosis (MDR-TB)', 'slug' => 'medicines-for-treatment-of-multi-drug-resistant-tuberculosis-mdr-tb', 'status' => 'Active'],
+    ['id' => 34, 'parent_id' => 21, 'name' => 'Antifungal Medicines', 'slug' => 'antifungal-medicines', 'status' => 'Active'],
+    ['id' => 35, 'parent_id' => 21, 'name' => 'Antiviral Medicines', 'slug' => 'antiviral-medicines', 'status' => 'Active'],
+    ['id' => 36, 'parent_id' => 35, 'name' => 'Antiherpes medicines', 'slug' => 'antiherpes-medicines', 'status' => 'Active'],
+    ['id' => 37, 'parent_id' => 35, 'name' => 'Antiretrovirals', 'slug' => 'antiretrovirals', 'status' => 'Active'],
+    ['id' => 38, 'parent_id' => 37, 'name' => 'Nucleoside/Nucleotide Reverse Transcriptase Inhibitors (NRTI)', 'slug' => 'nucleoside-nucleotide-reverse-transcriptase-inhibitors-nrti', 'status' => 'Active'],
+    ['id' => 39, 'parent_id' => 37, 'name' => 'Non-nucleoside Reverse Transcriptase Inhibitors (NNRTI)', 'slug' => 'non-nucleoside-reverse-transcriptase-inhibitors-nnrti', 'status' => 'Active'],
+    ['id' => 40, 'parent_id' => 37, 'name' => 'Protease Inhibitors (PI)', 'slug' => 'protease-inhibitors-pi', 'status' => 'Active'],
+    ['id' => 41, 'parent_id' => 37, 'name' => 'Integrase Inhibitors (PI)', 'slug' => 'integrase-inhibitors-pi', 'status' => 'Active'],
+    ['id' => 42, 'parent_id' => 37, 'name' => 'Fixed Dose Combinations (FDCs)', 'slug' => 'fixed-dose-combinations-fdcs', 'status' => 'Active'],
+    ['id' => 43, 'parent_id' => 37, 'name' => 'Medicines for prevention of HIV-related opportunistic infections', 'slug' => 'medicines-for-prevention-of-hiv-related-opportunistic-infections', 'status' => 'Active'],
+    ['id' => 44, 'parent_id' => 35, 'name' => 'Other Antivirals', 'slug' => 'other-antivirals', 'status' => 'Active'],
+    ['id' => 45, 'parent_id' => 35, 'name' => 'Antihepatitis Medicines', 'slug' => 'antihepatitis-medicines', 'status' => 'Active'],
+    ['id' => 46, 'parent_id' => 45, 'name' => 'Medicines for Hepatitis B', 'slug' => 'medicines-for-hepatitis-b', 'status' => 'Active'],
+    ['id' => 47, 'parent_id' => 46, 'name' => 'Nucleoside/Nucleotide reverse transcriptase inhibitors', 'slug' => 'nucleoside-nucleotide-reverse-transcriptase-inhibitors', 'status' => 'Active'],
+    ['id' => 48, 'parent_id' => 45, 'name' => 'Medicines for Hepatitis C', 'slug' => 'medicines-for-hepatitis-c', 'status' => 'Active'],
+    ['id' => 49, 'parent_id' => 48, 'name' => 'non-pangenotypic direct-acting antiviral combinations', 'slug' => 'non-pangenotypic-direct-acting-antiviral-combinations', 'status' => 'Active'],
+    ['id' => 50, 'parent_id' => 48, 'name' => 'Pangenotypic direct-acting antiviral combinations', 'slug' => 'pangenotypic-direct-acting-antiviral-combinations', 'status' => 'Active'],
+    ['id' => 51, 'parent_id' => 21, 'name' => 'Antiprotozoal medicines', 'slug' => 'antiprotozoal-medicines', 'status' => 'Active'],
+    ['id' => 52, 'parent_id' => 51, 'name' => 'Antiamoebic and antigiardiasis medicines', 'slug' => 'antiamoebic-and-antigiardiasis-medicines', 'status' => 'Active'],
+    ['id' => 53, 'parent_id' => 51, 'name' => 'Antileishmaniasis Medicines', 'slug' => 'antileishmaniasis-medicines', 'status' => 'Active'],
+    ['id' => 54, 'parent_id' => 51, 'name' => 'Antimalarial medicines', 'slug' => 'antimalarial-medicines', 'status' => 'Active'],
+    ['id' => 55, 'parent_id' => 54, 'name' => 'For curative treatment', 'slug' => 'for-curative-treatment', 'status' => 'Active'],
+    ['id' => 56, 'parent_id' => 54, 'name' => 'For Prophylaxis', 'slug' => 'for-prophylaxis', 'status' => 'Active'],
+    ['id' => 57, 'parent_id' => 51, 'name' => 'Antipneumocystosis & Antitoxoplasmosis Medicines', 'slug' => 'antipneumocystosis-antitoxoplasmosis-medicines', 'status' => 'Active'],
+    ['id' => 58, 'parent_id' => 51, 'name' => 'Antitrypanosomal medicines', 'slug' => 'antitrypanosomal-medicines', 'status' => 'Active'],
+    ['id' => 59, 'parent_id' => 58, 'name' => 'Human African Trypanosomiasis', 'slug' => 'human-african-trypanosomiasis', 'status' => 'Active'],
+    ['id' => 60, 'parent_id' => 59, 'name' => 'Medicines for the treatment of 1st stage Human African trypanosomiasis', 'slug' => 'medicines-for-the-treatment-of-1st-stage-human-african-trypanosomiasis', 'status' => 'Active'],
+    ['id' => 61, 'parent_id' => 59, 'name' => 'Medicines for the treatment of 2nd stage Human African trypanosomiasis', 'slug' => 'medicines-for-the-treatment-of-2nd-stage-human-african-trypanosomiasis', 'status' => 'Active'],
+    ['id' => 62, 'parent_id' => 21, 'name' => 'Medicines for ectoparasitic infections', 'slug' => 'medicines-for-ectoparasitic-infections', 'status' => 'Active'],
+
+    // 8. ANTIMIGRAINE MEDICINES
+    ['id' => 63, 'parent_id' => null, 'name' => 'ANTIMIGRAINE MEDICINES', 'slug' => 'antimigraine-medicines', 'status' => 'Active'],
+    ['id' => 64, 'parent_id' => 63, 'name' => 'For treatment of Acute Attack', 'slug' => 'for-treatment-of-acute-attack', 'status' => 'Active'],
+    ['id' => 65, 'parent_id' => 63, 'name' => 'Prophylaxis', 'slug' => 'prophylaxis', 'status' => 'Active'],
+
+    // 9. IMMUNOMODULATORS AND ANTINEOPLASTICS
+    ['id' => 66, 'parent_id' => null, 'name' => 'IMMUNOMODULATORS AND ANTINEOPLASTICS', 'slug' => 'immunomodulators-and-antineoplastics', 'status' => 'Active'],
+    ['id' => 67, 'parent_id' => 66, 'name' => 'Immunomodulators for non-malignant disease and supportive medicines', 'slug' => 'immunomodulators-for-non-malignant-disease-and-supportive-medicines', 'status' => 'Active'],
+    ['id' => 68, 'parent_id' => 66, 'name' => 'Antineoplastic and supportive medicines', 'slug' => 'antineoplastic-and-supportive-medicines', 'status' => 'Active'],
+    ['id' => 69, 'parent_id' => 68, 'name' => 'Cytotoxic medicines', 'slug' => 'cytotoxic-medicines', 'status' => 'Active'],
+    ['id' => 70, 'parent_id' => 68, 'name' => 'Targeted therapies', 'slug' => 'targeted-therapies', 'status' => 'Active'],
+    ['id' => 71, 'parent_id' => 68, 'name' => 'Immunomodulators', 'slug' => 'immunomodulators', 'status' => 'Active'],
+    ['id' => 72, 'parent_id' => 68, 'name' => 'Hormones and antihormones', 'slug' => 'hormones-and-antihormones', 'status' => 'Active'],
+    ['id' => 73, 'parent_id' => 68, 'name' => 'Supportive medicines', 'slug' => 'supportive-medicines', 'status' => 'Active'],
+
+    // 10. ANTIPARKINSONISM MEDICINES
+    ['id' => 74, 'parent_id' => null, 'name' => 'ANTIPARKINSONISM MEDICINES', 'slug' => 'antiparkinsonism-medicines', 'status' => 'Active'],
+
+    // 11. MEDICINES for ALZHEIMER’S disease and DEMENTIA
+    ['id' => 75, 'parent_id' => null, 'name' => 'MEDICINES for ALZHEIMER’S disease and DEMENTIA', 'slug' => 'medicines-for-alzheimers-disease-and-dementia', 'status' => 'Active'],
+
+    // 12. MEDICINES affecting the BLOOD
+    ['id' => 76, 'parent_id' => null, 'name' => 'MEDICINES affecting the BLOOD', 'slug' => 'medicines-affecting-the-blood', 'status' => 'Active'],
+    ['id' => 77, 'parent_id' => 76, 'name' => 'Antianaemics', 'slug' => 'antianaemics', 'status' => 'Active'],
+    ['id' => 78, 'parent_id' => 76, 'name' => 'Medicines affecting coagulation', 'slug' => 'medicines-affecting-coagulation', 'status' => 'Active'],
+    ['id' => 79, 'parent_id' => 78, 'name' => 'Coagulant medicines', 'slug' => 'coagulant-medicines', 'status' => 'Active'],
+    ['id' => 80, 'parent_id' => 78, 'name' => 'Anticoagulant medicines', 'slug' => 'anticoagulant-medicines', 'status' => 'Active'],
+    ['id' => 81, 'parent_id' => 76, 'name' => 'Other medicines for haemoglobinopathies', 'slug' => 'other-medicines-for-haemoglobinopathies', 'status' => 'Active'],
+
+    // 13. BLOOD PRODUCTS of HUMAN ORIGIN and PLASMA SUBSTITUTES
+    ['id' => 82, 'parent_id' => null, 'name' => 'BLOOD PRODUCTS of HUMAN ORIGIN and PLASMA SUBSTITUTES', 'slug' => 'blood-products-of-human-origin-and-plasma-substitutes', 'status' => 'Active'],
+    ['id' => 83, 'parent_id' => 82, 'name' => 'Blood and Blood Components', 'slug' => 'blood-and-blood-components', 'status' => 'Active'],
+    ['id' => 84, 'parent_id' => 82, 'name' => 'Plasma-derived Medicines', 'slug' => 'plasma-derived-medicines', 'status' => 'Active'],
+    ['id' => 85, 'parent_id' => 84, 'name' => 'Human immunoglobulins', 'slug' => 'human-immunoglobulins', 'status' => 'Active'],
+    ['id' => 86, 'parent_id' => 84, 'name' => 'Blood Coagulation Factors', 'slug' => 'blood-coagulation-factors', 'status' => 'Active'],
+    ['id' => 87, 'parent_id' => 82, 'name' => 'Plasma substitutes', 'slug' => 'plasma-substitutes', 'status' => 'Active'],
+
+    // 14. CARDIOVASCULAR MEDICINES
+    ['id' => 88, 'parent_id' => null, 'name' => 'CARDIOVASCULAR MEDICINES', 'slug' => 'cardiovascular-medicines', 'status' => 'Active'],
+    ['id' => 89, 'parent_id' => 88, 'name' => 'Antianginal Medicines', 'slug' => 'antianginal-medicines', 'status' => 'Active'],
+    ['id' => 90, 'parent_id' => 88, 'name' => 'Antiarrhythmic medicines', 'slug' => 'antiarrhythmic-medicines', 'status' => 'Active'],
+    ['id' => 91, 'parent_id' => 88, 'name' => 'Antihypertensive medicines', 'slug' => 'antihypertensive-medicines', 'status' => 'Active'],
+    ['id' => 92, 'parent_id' => 91, 'name' => 'Angiotensin converting enzyme Inhibitors (ACEIs)', 'slug' => 'angiotensin-converting-enzyme-inhibitors-aceis', 'status' => 'Active'],
+    ['id' => 93, 'parent_id' => 91, 'name' => 'Angiotensin Receptor Blockers (ARBs)', 'slug' => 'angiotensin-receptor-blockers-arbs', 'status' => 'Active'],
+    ['id' => 94, 'parent_id' => 91, 'name' => 'Beta Blockers (BBs)', 'slug' => 'beta-blockers-bbs', 'status' => 'Active'],
+    ['id' => 95, 'parent_id' => 91, 'name' => 'Calcium channel Blockers (CCBs)', 'slug' => 'calcium-channel-blockers-ccbs', 'status' => 'Active'],
+    ['id' => 96, 'parent_id' => 91, 'name' => 'Thiazide & Thiazide-like Diuretics', 'slug' => 'thiazide-thiazide-like-diuretics', 'status' => 'Active'],
+    ['id' => 97, 'parent_id' => 91, 'name' => 'Other anti-hypertensive agents', 'slug' => 'other-anti-hypertensive-agents', 'status' => 'Active'],
+    ['id' => 98, 'parent_id' => 97, 'name' => 'Centrally acting antihypertensive agents', 'slug' => 'centrally-acting-antihypertensive-agents', 'status' => 'Active'],
+    ['id' => 99, 'parent_id' => 97, 'name' => 'Potassium sparing Diuretics', 'slug' => 'potassium-sparing-diuretics', 'status' => 'Active'],
+    ['id' => 100, 'parent_id' => 97, 'name' => 'Vasodilators', 'slug' => 'vasodilators', 'status' => 'Active'],
+    ['id' => 101, 'parent_id' => 97, 'name' => 'Alpha 1 Receptor Blockers', 'slug' => 'alpha-1-receptor-blockers', 'status' => 'Active'],
+    ['id' => 102, 'parent_id' => 97, 'name' => 'non-selective alpha adrenoceptor antagonist', 'slug' => 'non-selective-alpha-adrenoceptor-antagonist', 'status' => 'Active'],
+    ['id' => 103, 'parent_id' => 97, 'name' => 'Others', 'slug' => 'others', 'status' => 'Active'],
+    ['id' => 104, 'parent_id' => 91, 'name' => 'Combination Antihypertensive medicines', 'slug' => 'combination-antihypertensive-medicines', 'status' => 'Active'],
+    ['id' => 105, 'parent_id' => 88, 'name' => 'Medicines used in Heart Failure', 'slug' => 'medicines-used-in-heart-failure', 'status' => 'Active'],
+    ['id' => 106, 'parent_id' => 88, 'name' => 'Antithrombotic medicines', 'slug' => 'antithrombotic-medicines', 'status' => 'Active'],
+    ['id' => 107, 'parent_id' => 106, 'name' => 'Anti-platelet medicines', 'slug' => 'anti-platelet-medicines', 'status' => 'Active'],
+    ['id' => 108, 'parent_id' => 106, 'name' => 'Thrombolytic medicines', 'slug' => 'thrombolytic-medicines', 'status' => 'Active'],
+    ['id' => 109, 'parent_id' => 88, 'name' => 'Lipid-lowering agents', 'slug' => 'lipid-lowering-agents', 'status' => 'Active'],
+
+    // 15. DERMATOLOGICAL MEDICINES (Topical)
+    ['id' => 110, 'parent_id' => null, 'name' => 'DERMATOLOGICAL MEDICINES (Topical)', 'slug' => 'dermatological-medicines-topical', 'status' => 'Active'],
+    ['id' => 111, 'parent_id' => 110, 'name' => 'Antifungal medicines', 'slug' => 'antifungal-medicines', 'status' => 'Active'],
+    ['id' => 112, 'parent_id' => 110, 'name' => 'Anti-infective medicines', 'slug' => 'anti-infective-medicines', 'status' => 'Active'],
+    ['id' => 113, 'parent_id' => 110, 'name' => 'Anti-inflammatory and antipruritic medicines', 'slug' => 'anti-inflammatory-and-antipruritic-medicines', 'status' => 'Active'],
+    ['id' => 114, 'parent_id' => 110, 'name' => 'Medicines affecting skin differentiation and proliferation', 'slug' => 'medicines-affecting-skin-differentiation-and-proliferation', 'status' => 'Active'],
+    ['id' => 115, 'parent_id' => 110, 'name' => 'Scabicides and pediculicides', 'slug' => 'scabicides-and-pediculicides', 'status' => 'Active'],
+    ['id' => 116, 'parent_id' => 110, 'name' => 'Medicines for Jiggers', 'slug' => 'medicines-for-jiggers', 'status' => 'Active'],
+    ['id' => 117, 'parent_id' => 110, 'name' => 'Sunscreen preparations', 'slug' => 'sunscreen-preparations', 'status' => 'Active'],
+
+    // 16. DIAGNOSTIC AGENTS
+    ['id' => 118, 'parent_id' => null, 'name' => 'DIAGNOSTIC AGENTS', 'slug' => 'diagnostic-agents', 'status' => 'Active'],
+    ['id' => 119, 'parent_id' => 118, 'name' => 'Ophthalmic diagnostics', 'slug' => 'ophthalmic-diagnostics', 'status' => 'Active'],
+    ['id' => 120, 'parent_id' => 118, 'name' => 'Radiocontrast media', 'slug' => 'radiocontrast-media', 'status' => 'Active'],
+    ['id' => 121, 'parent_id' => 118, 'name' => 'MRI contrast media', 'slug' => 'mri-contrast-media', 'status' => 'Active'],
+
+    // 17. DISINFECTANTS and ANTISEPTICS
+    ['id' => 122, 'parent_id' => null, 'name' => 'DISINFECTANTS and ANTISEPTICS', 'slug' => 'disinfectants-and-antiseptics', 'status' => 'Active'],
+    ['id' => 123, 'parent_id' => 122, 'name' => 'Antiseptics', 'slug' => 'antiseptics', 'status' => 'Active'],
+    ['id' => 124, 'parent_id' => 122, 'name' => 'Disinfectants', 'slug' => 'disinfectants', 'status' => 'Active'],
+
+    // 18. DIURETICS
+    ['id' => 125, 'parent_id' => null, 'name' => 'DIURETICS', 'slug' => 'diuretics', 'status' => 'Active'],
+
+    // 19. GASTROINTESTINAL MEDICINES
+    ['id' => 126, 'parent_id' => null, 'name' => 'GASTROINTESTINAL MEDICINES', 'slug' => 'gastrointestinal-medicines', 'status' => 'Active'],
+    ['id' => 127, 'parent_id' => 126, 'name' => 'Antiulcer medicines', 'slug' => 'antiulcer-medicines', 'status' => 'Active'],
+    ['id' => 128, 'parent_id' => 126, 'name' => 'Antiemetics', 'slug' => 'antiemetics', 'status' => 'Active'],
+    ['id' => 129, 'parent_id' => 126, 'name' => 'Anti-inflammatory medicines', 'slug' => 'anti-inflammatory-medicines', 'status' => 'Active'],
+    ['id' => 130, 'parent_id' => 126, 'name' => 'Laxatives', 'slug' => 'laxatives', 'status' => 'Active'],
+    ['id' => 131, 'parent_id' => 126, 'name' => 'Medicines used in Diarrhoea and Oral Rehydration', 'slug' => 'medicines-used-in-diarrhoea-and-oral-rehydration', 'status' => 'Active'],
+    ['id' => 132, 'parent_id' => 126, 'name' => 'Vasoconstrictor Medicines', 'slug' => 'vasoconstrictor-medicines', 'status' => 'Active'],
+    ['id' => 133, 'parent_id' => 126, 'name' => 'Medicines used for Ascites and GI bleeding', 'slug' => 'medicines-used-for-ascites-and-gi-bleeding', 'status' => 'Active'],
+
+    // 20. MEDICINES for ENDOCRINE DISORDERS
+    ['id' => 134, 'parent_id' => null, 'name' => 'MEDICINES for ENDOCRINE DISORDERS', 'slug' => 'medicines-for-endocrine-disorders', 'status' => 'Active'],
+    ['id' => 135, 'parent_id' => 134, 'name' => 'Adrenal Hormones & Synthetic Substitutes', 'slug' => 'adrenal-hormones-synthetic-substitutes', 'status' => 'Active'],
+    ['id' => 136, 'parent_id' => 134, 'name' => 'Androgens', 'slug' => 'androgens', 'status' => 'Active'],
+    ['id' => 137, 'parent_id' => 134, 'name' => 'Oestrogens', 'slug' => 'oestrogens', 'status' => 'Active'],
+    ['id' => 138, 'parent_id' => 134, 'name' => 'Progestogens', 'slug' => 'progestogens', 'status' => 'Active'],
+    ['id' => 139, 'parent_id' => 134, 'name' => 'Medicines for diabetes', 'slug' => 'medicines-for-diabetes', 'status' => 'Active'],
+    ['id' => 140, 'parent_id' => 139, 'name' => 'Insulins', 'slug' => 'insulins', 'status' => 'Active'],
+    ['id' => 141, 'parent_id' => 139, 'name' => 'Oral hypoglycaemic agents', 'slug' => 'oral-hypoglycaemic-agents', 'status' => 'Active'],
+    ['id' => 142, 'parent_id' => 141, 'name' => 'Sulphonylureas', 'slug' => 'sulphonylureas', 'status' => 'Active'],
+    ['id' => 143, 'parent_id' => 141, 'name' => 'Biguanides', 'slug' => 'biguanides', 'status' => 'Active'],
+    ['id' => 144, 'parent_id' => 141, 'name' => 'Thiazolidinediones', 'slug' => 'thiazolidinediones', 'status' => 'Active'],
+    ['id' => 145, 'parent_id' => 141, 'name' => 'DipeptidyIpeptidase (DPP)-4 inhibitors (Gliptins)', 'slug' => 'dipeptidyipeptidase-dpp-4-inhibitors-gliptins', 'status' => 'Active'],
+    ['id' => 146, 'parent_id' => 141, 'name' => 'SGLT-2 inhibitors', 'slug' => 'sglt-2-inhibitors', 'status' => 'Active'],
+    ['id' => 147, 'parent_id' => 141, 'name' => 'Fixed Dose Combinations', 'slug' => 'fixed-dose-combinations', 'status' => 'Active'],
+    ['id' => 148, 'parent_id' => 134, 'name' => 'Medicines for hypoglycaemia', 'slug' => 'medicines-for-hypoglycaemia', 'status' => 'Active'],
+    ['id' => 149, 'parent_id' => 134, 'name' => 'Thyroid Hormones and Anti-thyroid Medicines', 'slug' => 'thyroid-hormones-and-anti-thyroid-medicines', 'status' => 'Active'],
+    ['id' => 150, 'parent_id' => 134, 'name' => 'Medicines for Management of Hyperparathyroidism', 'slug' => 'medicines-for-management-of-hyperparathyroidism', 'status' => 'Active'],
+    ['id' => 151, 'parent_id' => 134, 'name' => 'Other endocrine medicines', 'slug' => 'other-endocrine-medicines', 'status' => 'Active'],
+
+    // 21. IMMUNOLOGICALS
+    ['id' => 152, 'parent_id' => null, 'name' => 'IMMUNOLOGICALS', 'slug' => 'immunologicals', 'status' => 'Active'],
+    ['id' => 153, 'parent_id' => 152, 'name' => 'Diagnostic agents', 'slug' => 'diagnostic-agents', 'status' => 'Active'],
+    ['id' => 154, 'parent_id' => 152, 'name' => 'Sera and Immunoglobulins', 'slug' => 'sera-and-immunoglobulins', 'status' => 'Active'],
+    ['id' => 155, 'parent_id' => 152, 'name' => 'Vaccines', 'slug' => 'vaccines', 'status' => 'Active'],
+
+    // 22. OPHTHALMOLOGICAL PREPARATIONS
+    ['id' => 156, 'parent_id' => null, 'name' => 'OPHTHALMOLOGICAL PREPARATIONS', 'slug' => 'ophthalmological-preparations', 'status' => 'Active'],
+    ['id' => 157, 'parent_id' => 156, 'name' => 'Anti-infective agents', 'slug' => 'anti-infective-agents', 'status' => 'Active'],
+    ['id' => 158, 'parent_id' => 156, 'name' => 'Anti-inflammatory agents', 'slug' => 'anti-inflammatory-agents', 'status' => 'Active'],
+    ['id' => 159, 'parent_id' => 156, 'name' => 'Local Anaesthetics', 'slug' => 'local-anaesthetics', 'status' => 'Active'],
+    ['id' => 160, 'parent_id' => 156, 'name' => 'Miotics and Anti-Glaucoma Medicines', 'slug' => 'miotics-and-anti-glaucoma-medicines', 'status' => 'Active'],
+    ['id' => 161, 'parent_id' => 156, 'name' => 'Mydriatics', 'slug' => 'mydriatics', 'status' => 'Active'],
+    ['id' => 162, 'parent_id' => 156, 'name' => 'Anti-vascular endothelial growth factor (VEGF) preparations', 'slug' => 'anti-vascular-endothelial-growth-factor-vegf-preparations', 'status' => 'Active'],
+    ['id' => 163, 'parent_id' => 156, 'name' => 'Anti-allergy medicines for the eye', 'slug' => 'anti-allergy-medicines-for-the-eye', 'status' => 'Active'],
+    ['id' => 164, 'parent_id' => 156, 'name' => 'Other medicines for the eye', 'slug' => 'other-medicines-for-the-eye', 'status' => 'Active'],
+
+    // 23. MEDICINES for REPRODUCTIVE HEALTH and PERINATAL CARE
+    ['id' => 165, 'parent_id' => null, 'name' => 'MEDICINES for REPRODUCTIVE HEALTH and PERINATAL CARE', 'slug' => 'medicines-for-reproductive-health-and-perinatal-care', 'status' => 'Active'],
+    ['id' => 166, 'parent_id' => 165, 'name' => 'Contraceptives', 'slug' => 'contraceptives', 'status' => 'Active'],
+    ['id' => 167, 'parent_id' => 166, 'name' => 'Oral hormonal contraceptives', 'slug' => 'oral-hormonal-contraceptives', 'status' => 'Active'],
+    ['id' => 168, 'parent_id' => 166, 'name' => 'Injectable hormonal contraceptives', 'slug' => 'injectable-hormonal-contraceptives', 'status' => 'Active'],
+    ['id' => 169, 'parent_id' => 166, 'name' => 'Intrauterine devices (IUD)', 'slug' => 'intrauterine-devices-iud', 'status' => 'Active'],
+    ['id' => 170, 'parent_id' => 166, 'name' => 'Contraceptive implants', 'slug' => 'contraceptive-implants', 'status' => 'Active'],
+    ['id' => 171, 'parent_id' => 165, 'name' => 'Ovulation Inducers', 'slug' => 'ovulation-inducers', 'status' => 'Active'],
+    ['id' => 172, 'parent_id' => 165, 'name' => 'Medicines for treatment of Endometriosis', 'slug' => 'medicines-for-treatment-of-endometriosis', 'status' => 'Active'],
+    ['id' => 173, 'parent_id' => 165, 'name' => 'Medicines for treatment of Fibroids', 'slug' => 'medicines-for-treatment-of-fibroids', 'status' => 'Active'],
+    ['id' => 174, 'parent_id' => 165, 'name' => 'Medicines for treatment of Abnormal uterine bleeding', 'slug' => 'medicines-for-treatment-of-abnormal-uterine-bleeding', 'status' => 'Active'],
+    ['id' => 175, 'parent_id' => 165, 'name' => 'Uterotonics (Medicines acting on the Uterus)', 'slug' => 'uterotonics-medicines-acting-on-the-uterus', 'status' => 'Active'],
+    ['id' => 176, 'parent_id' => 175, 'name' => 'Oxytocics', 'slug' => 'oxytocics', 'status' => 'Active'],
+    ['id' => 177, 'parent_id' => 165, 'name' => 'Anti-oxytocics (Tocolytics)', 'slug' => 'anti-oxytocics-tocolytics', 'status' => 'Active'],
+    ['id' => 178, 'parent_id' => 165, 'name' => 'Other medicines administered to the mother', 'slug' => 'other-medicines-administered-to-the-mother', 'status' => 'Active'],
+    ['id' => 179, 'parent_id' => 165, 'name' => 'Medicines administered to the neonate [c]', 'slug' => 'medicines-administered-to-the-neonate-c', 'status' => 'Active'],
+
+    // 24. DIALYSIS SOLUTIONS
+    ['id' => 180, 'parent_id' => null, 'name' => 'DIALYSIS SOLUTIONS', 'slug' => 'dialysis-solutions', 'status' => 'Active'],
+    ['id' => 181, 'parent_id' => 180, 'name' => 'Continuous ambulatory peritoneal dialysis solution (CAPD)', 'slug' => 'continuous-ambulatory-peritoneal-dialysis-solution-capd', 'status' => 'Active'],
+    ['id' => 182, 'parent_id' => 180, 'name' => 'Haemodialysis solution', 'slug' => 'haemodialysis-solution', 'status' => 'Active'],
+
+    // 25. MEDICINES for MENTAL and BEHAVIOURAL DISORDERS
+    ['id' => 183, 'parent_id' => null, 'name' => 'MEDICINES for MENTAL and BEHAVIOURAL DISORDERS', 'slug' => 'medicines-for-mental-and-behavioural-disorders', 'status' => 'Active'],
+    ['id' => 184, 'parent_id' => 183, 'name' => 'Medicines used in Psychotic disorders', 'slug' => 'medicines-used-in-psychotic-disorders', 'status' => 'Active'],
+    ['id' => 185, 'parent_id' => 183, 'name' => 'Medicines used in Mood disorders', 'slug' => 'medicines-used-in-mood-disorders', 'status' => 'Active'],
+    ['id' => 186, 'parent_id' => 185, 'name' => 'Medicines used in Depressive disorders', 'slug' => 'medicines-used-in-depressive-disorders', 'status' => 'Active'],
+    ['id' => 187, 'parent_id' => 185, 'name' => 'Medicines used in bipolar disorders', 'slug' => 'medicines-used-in-bipolar-disorders', 'status' => 'Active'],
+    ['id' => 188, 'parent_id' => 183, 'name' => 'Medicines for Anxiety disorders', 'slug' => 'medicines-for-anxiety-disorders', 'status' => 'Active'],
+    ['id' => 189, 'parent_id' => 183, 'name' => 'Medicines used in obsessive-compulsive disorders', 'slug' => 'medicines-used-in-obsessive-compulsive-disorders', 'status' => 'Active'],
+    ['id' => 190, 'parent_id' => 183, 'name' => 'Medicines for Disorders due to Psychoactive Substance Abuse', 'slug' => 'medicines-for-disorders-due-to-psychoactive-substance-abuse', 'status' => 'Active'],
+    ['id' => 191, 'parent_id' => 183, 'name' => 'Medicines used in attention deficit hyperactivity disorder (ADHD)', 'slug' => 'medicines-used-in-attention-deficit-hyperactivity-disorder-adhd', 'status' => 'Active'],
+    ['id' => 192, 'parent_id' => 183, 'name' => 'Medicines for sleep disorders', 'slug' => 'medicines-for-sleep-disorders', 'status' => 'Active'],
+
+    // 26. MEDICINES acting on the RESPIRATORY TRACT
+    ['id' => 193, 'parent_id' => null, 'name' => 'MEDICINES acting on the RESPIRATORY TRACT', 'slug' => 'medicines-acting-on-the-respiratory-tract', 'status' => 'Active'],
+    ['id' => 194, 'parent_id' => 193, 'name' => 'Antiasthmatic medicines and medicines for chronic obstructive pulmonary disease', 'slug' => 'antiasthmatic-medicines-and-medicines-for-chronic-obstructive-pulmonary-disease', 'status' => 'Active'],
+    ['id' => 195, 'parent_id' => 193, 'name' => 'Medicines for Idiopathic Pulmonary Fibrosis', 'slug' => 'medicines-for-idiopathic-pulmonary-fibrosis', 'status' => 'Active'],
+
+    // 27. EAR, NOSE and THROAT MEDICINES
+    ['id' => 196, 'parent_id' => null, 'name' => 'EAR, NOSE and THROAT MEDICINES', 'slug' => 'ear-nose-and-throat-medicines', 'status' => 'Active'],
+    ['id' => 197, 'parent_id' => 196, 'name' => 'Medicines for the Ear', 'slug' => 'medicines-for-the-ear', 'status' => 'Active'],
+    ['id' => 198, 'parent_id' => 196, 'name' => 'Medicines for the Nose', 'slug' => 'medicines-for-the-nose', 'status' => 'Active'],
+    ['id' => 199, 'parent_id' => 196, 'name' => 'Medicines for the Throat and Mouth', 'slug' => 'medicines-for-the-throat-and-mouth', 'status' => 'Active'],
+
+    // 28. MEDICINES for RHEUMATOLOGY
+    ['id' => 200, 'parent_id' => null, 'name' => 'MEDICINES for RHEUMATOLOGY', 'slug' => 'medicines-for-rheumatology', 'status' => 'Active'],
+    ['id' => 201, 'parent_id' => 200, 'name' => 'Medicines used to treat Gout', 'slug' => 'medicines-used-to-treat-gout', 'status' => 'Active'],
+    ['id' => 202, 'parent_id' => 200, 'name' => 'Disease-modifying agents used in rheumatic disorders (DMARDs) and Immunosuppressants used in Rheumatology', 'slug' => 'disease-modifying-agents-used-in-rheumatic-disorders-dmards-and-immunosuppressants-used-in-rheumatology', 'status' => 'Active'],
+    ['id' => 203, 'parent_id' => 200, 'name' => 'Medicines for Juvenile joint diseases', 'slug' => 'medicines-for-juvenile-joint-diseases', 'status' => 'Active'],
+
+    // 29. MEDICINES for OSTEOPOROSIS
+    ['id' => 204, 'parent_id' => null, 'name' => 'MEDICINES for OSTEOPOROSIS', 'slug' => 'medicines-for-osteoporosis', 'status' => 'Active'],
+
+    // 30. MEDICINES for WOUND CARE
+    ['id' => 205, 'parent_id' => null, 'name' => 'MEDICINES for WOUND CARE', 'slug' => 'medicines-for-wound-care', 'status' => 'Active'],
+
+    // 31. MEDICINES for correcting WATER, ELECTROLYTE and ACID-BASE DISTURBANCES
+    ['id' => 206, 'parent_id' => null, 'name' => 'MEDICINES for correcting WATER, ELECTROLYTE and ACID-BASE DISTURBANCES', 'slug' => 'medicines-for-correcting-water-electrolyte-and-acid-base-disturbances', 'status' => 'Active'],
+    ['id' => 207, 'parent_id' => 206, 'name' => 'Oral', 'slug' => 'oral', 'status' => 'Active'],
+    ['id' => 208, 'parent_id' => 206, 'name' => 'Parenteral', 'slug' => 'parenteral', 'status' => 'Active'],
+
+    // 32. VITAMINS and MINERALS
+    ['id' => 209, 'parent_id' => null, 'name' => 'VITAMINS and MINERALS', 'slug' => 'vitamins-and-minerals', 'status' => 'Active'],
+
+    // 33. PREPARATIONS for CLINICAL NUTRITION MANAGEMENT
+    ['id' => 210, 'parent_id' => null, 'name' => 'PREPARATIONS for CLINICAL NUTRITION MANAGEMENT', 'slug' => 'preparations-for-clinical-nutrition-management', 'status' => 'Active'],
+    ['id' => 211, 'parent_id' => 210, 'name' => 'Feeds for Special medical purposes', 'slug' => 'feeds-for-special-medical-purposes', 'status' => 'Active'],
+    ['id' => 212, 'parent_id' => 211, 'name' => 'Parenteral feeds', 'slug' => 'parenteral-feeds', 'status' => 'Active'],
+    ['id' => 213, 'parent_id' => 211, 'name' => 'Enteral feeds - liquid formulations', 'slug' => 'enteral-feeds-liquid-formulations', 'status' => 'Active'],
+    ['id' => 214, 'parent_id' => 211, 'name' => 'Enteral feeds - powder formulations', 'slug' => 'enteral-feeds-powder-formulations', 'status' => 'Active'],
+    ['id' => 215, 'parent_id' => 210, 'name' => 'Nutrition Feeds for managing Severe acute malnutrition (SAM) and Moderate acute malnutrition (MAM)', 'slug' => 'nutrition-feeds-for-managing-severe-acute-malnutrition-sam-and-moderate-acute-malnutrition-mam', 'status' => 'Active'],
+
+    // 34. NUCLEAR MEDICINE (RADIOPHARMACEUTICALS)
+    ['id' => 216, 'parent_id' => null, 'name' => 'NUCLEAR MEDICINE (RADIOPHARMACEUTICALS)', 'slug' => 'nuclear-medicine-radiopharmaceuticals', 'status' => 'Active'],
+    ['id' => 217, 'parent_id' => 216, 'name' => 'Diagnostic Radiopharmaceuticals', 'slug' => 'diagnostic-radiopharmaceuticals', 'status' => 'Active'],
+    ['id' => 218, 'parent_id' => 217, 'name' => 'Radiopharmaceuticals for planar and single photon emission computed tomography (SPECT) imaging', 'slug' => 'radiopharmaceuticals-for-planar-and-single-photon-emission-computed-tomography-spect-imaging', 'status' => 'Active'],
+    ['id' => 219, 'parent_id' => 217, 'name' => 'Radiopharmaceuticals for Positron emission tomography (PET)', 'slug' => 'radiopharmaceuticals-for-positron-emission-tomography-pet', 'status' => 'Active'],
+    ['id' => 220, 'parent_id' => 216, 'name' => 'Therapeutic Radiopharmaceuticals', 'slug' => 'therapeutic-radiopharmaceuticals', 'status' => 'Active'],
+
+    // 35. MEDICINES for BENIGN PROSTATIC HYPERPLASIA (BPH)
+    ['id' => 221, 'parent_id' => null, 'name' => 'MEDICINES for BENIGN PROSTATIC HYPERPLASIA (BPH)', 'slug' => 'medicines-for-benign-prostatic-hyperplasia-bph', 'status' => 'Active'],
+];

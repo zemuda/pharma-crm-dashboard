@@ -99,17 +99,50 @@
         /* Completeness */
         // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
         "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+        "jsx": "react-jsx",
         "baseUrl": ".",
         "paths": {
             "@/*": [
                 "./resources/js/*"
+            ],
+            "@common/*": [
+                "./resources/js/common/*"
+            ],
+            "@Components/*": [
+                "./resources/js/Components/*"
+            ],
+            "@hooks/*": [
+                "./resources/js/hooks/*"
+            ],
+            "@types": [
+                "./resources/js/types/index.ts"
+            ],
+            "@slices/*": [
+                "./resources/js/slices/*"
+            ],
+            "@utils/*": [
+                "./resources/js/utils/*"
+            ],
+            "@layouts/*": [
+                "./resources/js/Layouts/*"
+            ],
+            "@modules/*": [
+                "./Modules/*"
             ]
-        },
-        "jsx": "react-jsx"
+        }
     },
     "include": [
         "resources/js/**/*.ts",
+        "resources/js/**/*.tsx",
         "resources/js/**/*.d.ts",
-        "resources/js/**/*.tsx"
+        "Modules/**/Resources/js/**/*.ts",
+        "Modules/**/Resources/js/**/*.tsx",
+        "Modules/**/Resources/js/**/*.d.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "vendor",
+        "public",
+        "storage"
     ]
 }

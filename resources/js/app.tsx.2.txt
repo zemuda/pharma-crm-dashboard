@@ -1,0 +1,216 @@
+// import '../css/app.css';
+//import Scss
+import '../scss/themes.scss';
+
+import { createInertiaApp } from '@inertiajs/react';
+import { configureStore } from '@reduxjs/toolkit';
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
+import rootReducer from './slices';
+// import { initializeTheme } from './hooks/use-appearance';
+
+const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+const store = configureStore({ reducer: rootReducer, devTools: true });
+
+// Pre-load glob patterns at module level (runs once)
+const tailwindGlob = import.meta.glob('./tailwind/pages/**/*.tsx');
+const mainGlob = import.meta.glob('./pages/**/*.tsx');
+const modulesGlob = import.meta.glob(
+    '../../Modules/**/Resources/js/Pages/**/*.tsx',
+);
+
+// Enhanced resolver with comprehensive module support
+const resolveComponent = async (name: string): Promise<any> => {
+    console.log('🔍 Resolving page:', name);
+
+    // Method 1: Direct module path resolution (e.g., Product/list-products)
+    if (name.includes('/')) {
+        const [firstPart, ...restParts] = name.split('/');
+
+        // Skip if it's auth, dashboard, or settings (handled by other methods)
+        if (!['auth', 'dashboard', 'settings'].includes(firstPart)) {
+            const moduleName = firstPart;
+            const pagePath = restParts.join('/');
+
+            // Try multiple module path patterns
+            const modulePaths = [
+                `../../Modules/${moduleName}/Resources/js/Pages/${pagePath}.tsx`,
+                `../../Modules/${moduleName}/Resources/js/Pages/${pagePath}.jsx`,
+                `../../Modules/${moduleName}/resources/js/Pages/${pagePath}.tsx`,
+                `../../Modules/${moduleName}/resources/pages/${pagePath}.tsx`,
+            ];
+
+            for (const modulePath of modulePaths) {
+                try {
+                    console.log(`📁 Trying module path: ${modulePath}`);
+                    const component = await resolvePageComponent(
+                        modulePath,
+                        modulesGlob,
+                    );
+                    if (component) {
+                        console.log(`✅ Found in modules: ${modulePath}`);
+                        return component;
+                    }
+                } catch (error) {
+                    // Continue to next path pattern
+                    console.log(`❌ Not found: ${modulePath}`);
+                }
+            }
+        }
+    }
+
+    // Method 2: Explicit module namespace (e.g., product::list-products)
+    if (name.includes('::')) {
+        const [moduleName, pagePath] = name.split('::');
+        const modulePaths = [
+            `../../Modules/${moduleName}/Resources/js/Pages/${pagePath}.tsx`,
+            `../../Modules/${moduleName}/Resources/js/Pages/${pagePath}.jsx`,
+        ];
+
+        for (const modulePath of modulePaths) {
+            try {
+                console.log(`🔧 Trying explicit module: ${modulePath}`);
+                const component = await resolvePageComponent(
+                    modulePath,
+                    modulesGlob,
+                );
+                if (component) {
+                    console.log(`✅ Found via namespace: ${modulePath}`);
+                    return component;
+                }
+            } catch (error) {
+                console.log(`❌ Module namespace not found: ${modulePath}`);
+            }
+        }
+    }
+
+    // Method 3: Auth and settings pages use Tailwind directory
+    if (
+        name.startsWith('auth/') ||
+        name.startsWith('dashboard') ||
+        name.startsWith('settings/')
+    ) {
+        const tailwindPaths = [
+            `./tailwind/pages/${name}.tsx`,
+            `./tailwind/pages/${name}.jsx`,
+        ];
+
+        for (const tailwindPath of tailwindPaths) {
+            try {
+                console.log(`🎨 Trying Tailwind path: ${tailwindPath}`);
+                const component = await resolvePageComponent(
+                    tailwindPath,
+                    tailwindGlob,
+                );
+                if (component) {
+                    console.log(`✅ Found in Tailwind: ${tailwindPath}`);
+                    return component;
+                }
+            } catch (error) {
+                console.log(`❌ Tailwind page not found: ${tailwindPath}`);
+            }
+        }
+    }
+
+    // Method 4: All other pages use main pages directory (Bootstrap)
+    const mainPaths = [`./pages/${name}.tsx`, `./pages/${name}.jsx`];
+
+    for (const mainPath of mainPaths) {
+        try {
+            console.log(`📄 Trying main path: ${mainPath}`);
+            const component = await resolvePageComponent(mainPath, mainGlob);
+            if (component) {
+                console.log(`✅ Found in main pages: ${mainPath}`);
+                return component;
+            }
+        } catch (error) {
+            console.log(`❌ Main page not found: ${mainPath}`);
+        }
+    }
+
+    // Method 5: Final fallback - try as direct module page
+    const finalModulePaths = [
+        `../../Modules/${name}/Resources/js/Pages/index.tsx`,
+        `../../Modules/${name}/Resources/js/Pages/${name}.tsx`,
+    ];
+
+    for (const modulePath of finalModulePaths) {
+        try {
+            console.log(`🔄 Final attempt - module path: ${modulePath}`);
+            const component = await resolvePageComponent(
+                modulePath,
+                modulesGlob,
+            );
+            if (component) {
+                console.log(`✅ Found in final attempt: ${modulePath}`);
+                return component;
+            }
+        } catch (error) {
+            // Last resort failed
+        }
+    }
+
+    // If we get here, no component was found
+    console.error(`❌ Page not found: ${name}`);
+    throw new Error(`Page not found: ${name}`);
+};
+
+// Error boundary for component resolution
+const resolveComponentWithErrorHandling = (name: string) => {
+    try {
+        return resolveComponent(name);
+    } catch (error) {
+        console.error('Failed to resolve component:', error);
+
+        // Return a simple error component
+        const ErrorComponent = () => (
+            <div className="flex min-h-screen items-center justify-center bg-gray-50">
+                <div className="text-center">
+                    <h1 className="mb-4 text-2xl font-bold text-gray-900">
+                        Page Not Found
+                    </h1>
+                    <p className="mb-4 text-gray-600">
+                        The page "{name}" could not be found.
+                    </p>
+                    <a href="/" className="text-blue-600 hover:text-blue-800">
+                        Return to Home
+                    </a>
+                </div>
+            </div>
+        );
+
+        return Promise.resolve({ default: ErrorComponent });
+    }
+};
+
+createInertiaApp({
+    title: (title) => (title ? `${title} - ${appName}` : appName),
+    resolve: (name) => resolveComponentWithErrorHandling(name),
+    setup({ el, App, props }) {
+        const root = createRoot(el);
+
+        root.render(
+            <Provider store={store}>
+                <App {...props} />
+            </Provider>,
+        );
+    },
+    progress: {
+        color: '#4B5563',
+    },
+})
+    .then(() => {
+        console.log('🚀 Inertia app initialized successfully');
+    })
+    .catch((error) => {
+        console.error('💥 Failed to initialize Inertia app:', error);
+    });
+
+// This will set light / dark mode on load...
+// initializeTheme();
+
+// Hot Module Replacement (HMR) for development
+if (import.meta.hot) {
+    import.meta.hot.accept();
+}
