@@ -1,29 +1,33 @@
-import React, { useEffect, useState } from 'react';
 import PropTypes from "prop-types";
+import React, { useEffect, useState } from 'react';
 
 //import Components
+import RightSidebar from '../Components/Common/RightSidebar';
+import Footer from './Footer';
 import Header from './Header';
 import Sidebar from './Sidebar';
-import Footer from './Footer';
-import RightSidebar from '../Components/Common/RightSidebar';
 
 //import actions
 import {
     changeLayout,
-    changeSidebarTheme,
     changeLayoutMode,
-    changeLayoutWidth,
     changeLayoutPosition,
-    changeTopbarTheme,
+    changeLayoutWidth,
     changeLeftsidebarSizeType,
     changeLeftsidebarViewType,
     changeSidebarImageType,
-    changeSidebarVisibility
+    changeSidebarTheme,
+    changeSidebarVisibility,
+    changeTopbarTheme
 } from "../slices/thunk";
 
 //redux
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createSelector } from 'reselect';
+
+interface LayoutProps {
+    children: React.ReactNode;
+}
 
 
 const Layout = ({children, props} : any) => {

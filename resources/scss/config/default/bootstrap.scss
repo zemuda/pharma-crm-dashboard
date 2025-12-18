@@ -16,9 +16,16 @@ File: Custom Bootstrap Css File
 // @import "./node_modules/bootstrap/scss/bootstrap";
 
 // modified bootstrap imports
-@import '../../../../node_modules/bootstrap/scss/functions';
-@import '../../../../node_modules/bootstrap/scss/variables';
+// @import '../../../../node_modules/bootstrap/scss/functions';
+// @import '../../../../node_modules/bootstrap/scss/variables';
+// @import 'variables';
+// @import 'variables-dark';
+// @import '../../components/utilities';
+// @import '../../../../node_modules/bootstrap/scss/bootstrap.scss';
+
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
 @import 'variables';
 @import 'variables-dark';
 @import '../../components/utilities';
-@import '../../../../node_modules/bootstrap/scss/bootstrap.scss';
+@import 'bootstrap/scss/bootstrap.scss';

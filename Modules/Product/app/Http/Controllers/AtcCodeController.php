@@ -4,6 +4,7 @@ namespace Modules\Product\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class AtcCodeController extends Controller
 {
@@ -12,7 +13,7 @@ class AtcCodeController extends Controller
      */
     public function index()
     {
-        return view('product::index');
+        return Inertia::render('ims/atc-codes/list');
     }
 
     /**
@@ -20,7 +21,7 @@ class AtcCodeController extends Controller
      */
     public function create()
     {
-        return view('product::create');
+        return Inertia::render('ims/atc-codes/create');
     }
 
     /**

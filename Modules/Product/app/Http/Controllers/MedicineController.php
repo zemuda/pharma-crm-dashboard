@@ -13,7 +13,7 @@ class MedicineController extends Controller
      */
     public function index()
     {
-        return Inertia::render('IMS/ims-list-medicines');
+        return Inertia::render('ims/medicines/list');
     }
 
     /**

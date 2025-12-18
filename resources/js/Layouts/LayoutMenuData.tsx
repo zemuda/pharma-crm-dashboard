@@ -5,12 +5,17 @@ const Navdata = () => {
     //state data
     const [isDashboard, setIsDashboard] = useState<boolean>(false);
     const [isInventory, setIsInventory] = useState<boolean>(false);
+    const [isSales, setIsSales] = useState<boolean>(false);
 
-    // Inventory
+    // Inventory Management Sytem
     const [isProducts, setIsProducts] = useState<boolean>(false);
     const [isMedicines, setIsMedicines] = useState<boolean>(false);
     const [isTherapeuticClasses, setIsTherapeuticClasses] =
         useState<boolean>(false);
+    const [isATCCodes, setIsATCCodes] = useState<boolean>(false);
+
+    // Customer Management Sytem
+    const [isCustomers, setIsCustomers] = useState<boolean>(false);
 
     const [iscurrentState, setIscurrentState] = useState('Dashboard');
 
@@ -36,7 +41,10 @@ const Navdata = () => {
         if (iscurrentState !== 'Inventory') {
             setIsInventory(false);
         }
-    }, [history, iscurrentState, isInventory]);
+        if (iscurrentState !== 'Sales') {
+            setIsSales(false);
+        }
+    }, [history, iscurrentState, isInventory, isSales]);
 
     const menuItems: any = [
         {
@@ -132,6 +140,135 @@ const Navdata = () => {
                         },
                         {
                             id: 2,
+                            label: 'ATC Codes',
+                            link: '/#',
+                            parentId: 'inventory',
+                            isChildItem: true,
+                            stateVariables: isATCCodes,
+                            click: function (e: any) {
+                                e.preventDefault();
+                                setIsATCCodes(!isATCCodes);
+                            },
+                            childItems: [
+                                {
+                                    id: 1,
+                                    label: 'List ATC Codes',
+                                    link: '/ims/atc-codes',
+                                    parentId: 'inventory',
+                                },
+                                {
+                                    id: 2,
+                                    label: 'Create ATC Code',
+                                    link: '/ims/atc-codes/create',
+                                    parentId: 'inventory',
+                                },
+                            ],
+                        },
+                        {
+                            id: 3,
+                            label: 'Therapeutic Classes',
+                            link: '/#',
+                            parentId: 'inventory',
+                            isChildItem: true,
+                            stateVariables: isTherapeuticClasses,
+                            click: function (e: any) {
+                                e.preventDefault();
+                                setIsTherapeuticClasses(!isTherapeuticClasses);
+                            },
+                            childItems: [
+                                {
+                                    id: 1,
+                                    label: 'List Therapeutic Classes',
+                                    link: '/ims/therapeutic-classes',
+                                    parentId: 'inventory',
+                                },
+                                {
+                                    id: 2,
+                                    label: 'Create Therapeutic Class',
+                                    link: '/ims/therapeutic-classes/create',
+                                    parentId: 'inventory',
+                                },
+                                {
+                                    id: 3,
+                                    label: 'Overview',
+                                    link: '/apps-job-details',
+                                    parentId: 'apps',
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            label: 'Customer Management',
+            isHeader: true,
+        },
+        {
+            id: 'sales',
+            label: 'Sales',
+            icon: 'ri-line-chart-line',
+            link: '/#',
+            click: function (e: any) {
+                e.preventDefault();
+                setIsSales(!isSales);
+                setIscurrentState('Sales');
+                updateIconSidebar(e);
+            },
+            stateVariables: isSales,
+            subItems: [
+                {
+                    id: 'customer',
+                    label: 'Customers',
+                    link: '/crm/contacts/list',
+                    parentId: 'sales',                                        
+                },
+                {
+                    id: 'medicine',
+                    label: 'Medicines',
+                    link: '/#',
+                    parentId: 'inventory',
+                    isChildItem: true,
+                    click: function (e: any) {
+                        e.preventDefault();
+                        setIsMedicines(!isMedicines);
+                    },
+                    stateVariables: isMedicines,
+                    childItems: [
+                        {
+                            id: 1,
+                            label: 'List Medicines',
+                            link: '/ims/medicines',
+                            parentId: 'inventory',
+                        },
+                        {
+                            id: 2,
+                            label: 'ATC Codes',
+                            link: '/#',
+                            parentId: 'inventory',
+                            isChildItem: true,
+                            stateVariables: isATCCodes,
+                            click: function (e: any) {
+                                e.preventDefault();
+                                setIsATCCodes(!isATCCodes);
+                            },
+                            childItems: [
+                                {
+                                    id: 1,
+                                    label: 'List ATC Codes',
+                                    link: '/ims/atc-codes',
+                                    parentId: 'inventory',
+                                },
+                                {
+                                    id: 2,
+                                    label: 'Create ATC Code',
+                                    link: '/ims/atc-codes/create',
+                                    parentId: 'inventory',
+                                },
+                            ],
+                        },
+                        {
+                            id: 3,
                             label: 'Therapeutic Classes',
                             link: '/#',
                             parentId: 'inventory',

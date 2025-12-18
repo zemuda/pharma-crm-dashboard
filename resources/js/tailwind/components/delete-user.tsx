@@ -1,18 +1,18 @@
 import ProfileController from '@/actions/App/Http/Controllers/Settings/ProfileController';
-import HeadingSmall from '@/tailwind/components/heading-small';
-import InputError from '@/tailwind/components/input-error';
-import { Button } from '@/tailwind/components/ui/button';
+import HeadingSmall from '@/tiptap_editor/components/heading-small';
+import InputError from '@/tiptap_editor/components/input-error';
+import { Button } from '@/tiptap_editor/components/ui/button';
 import {
-    Dialog,
-    DialogClose,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogTitle,
-    DialogTrigger,
-} from '@/tailwind/components/ui/dialog';
-import { Input } from '@/tailwind/components/ui/input';
-import { Label } from '@/tailwind/components/ui/label';
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogTitle,
+  DialogTrigger,
+} from '@/tiptap_editor/components/ui/dialog';
+import { Input } from '@/tiptap_editor/components/ui/input';
+import { Label } from '@/tiptap_editor/components/ui/label';
 import { Form } from '@inertiajs/react';
 import { useRef } from 'react';
 

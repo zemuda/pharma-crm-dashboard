@@ -1,14 +1,14 @@
 import { logout } from '@/routes';
 import { edit } from '@/routes/profile';
-import {
-    DropdownMenuGroup,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-} from '@/tailwind/components/ui/dropdown-menu';
-import { UserInfo } from '@/tailwind/components/user-info';
-import { useMobileNavigation } from '@/tailwind/hooks/use-mobile-navigation';
 import { type User } from '@/tailwind/types';
+import {
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+} from '@/tiptap_editor/components/ui/dropdown-menu';
+import { UserInfo } from '@/tiptap_editor/components/user-info';
+import { useMobileNavigation } from '@/tiptap_editor/hooks/use-mobile-navigation';
 import { Link, router } from '@inertiajs/react';
 import { LogOut, Settings } from 'lucide-react';
 

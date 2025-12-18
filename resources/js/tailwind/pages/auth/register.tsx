@@ -3,12 +3,12 @@ import { login } from '@/routes';
 import { Form, Head } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-react';
 
-import InputError from '@/tailwind/components/input-error';
-import TextLink from '@/tailwind/components/text-link';
-import { Button } from '@/tailwind/components/ui/button';
-import { Input } from '@/tailwind/components/ui/input';
-import { Label } from '@/tailwind/components/ui/label';
 import AuthLayout from '@/tailwind/layouts/auth-layout';
+import InputError from '@/tiptap_editor/components/input-error';
+import TextLink from '@/tiptap_editor/components/text-link';
+import { Button } from '@/tiptap_editor/components/ui/button';
+import { Input } from '@/tiptap_editor/components/ui/input';
+import { Label } from '@/tiptap_editor/components/ui/label';
 
 export default function Register() {
     return (

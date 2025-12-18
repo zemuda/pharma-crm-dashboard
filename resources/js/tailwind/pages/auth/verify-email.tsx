@@ -4,9 +4,9 @@ import { logout } from '@/routes';
 import { Form, Head } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-react';
 
-import TextLink from '@/tailwind/components/text-link';
-import { Button } from '@/tailwind/components/ui/button';
 import AuthLayout from '@/tailwind/layouts/auth-layout';
+import TextLink from '@/tiptap_editor/components/text-link';
+import { Button } from '@/tiptap_editor/components/ui/button';
 
 export default function VerifyEmail({ status }: { status?: string }) {
     return (

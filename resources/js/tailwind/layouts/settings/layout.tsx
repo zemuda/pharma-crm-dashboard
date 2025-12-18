@@ -2,11 +2,11 @@ import { edit as editAppearance } from '@/routes/appearance';
 import { edit as editPassword } from '@/routes/password';
 import { edit } from '@/routes/profile';
 import { show } from '@/routes/two-factor';
-import Heading from '@/tailwind/components/heading';
-import { Button } from '@/tailwind/components/ui/button';
-import { Separator } from '@/tailwind/components/ui/separator';
 import { cn } from '@/tailwind/lib/utils';
 import { type NavItem } from '@/tailwind/types';
+import Heading from '@/tiptap_editor/components/heading';
+import { Button } from '@/tiptap_editor/components/ui/button';
+import { Separator } from '@/tiptap_editor/components/ui/separator';
 import { Link } from '@inertiajs/react';
 import { type PropsWithChildren } from 'react';
 

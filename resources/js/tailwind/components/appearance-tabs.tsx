@@ -1,5 +1,5 @@
-import { Appearance, useAppearance } from '@/tailwind/hooks/use-appearance';
 import { cn } from '@/tailwind/lib/utils';
+import { Appearance, useAppearance } from '@/tiptap_editor/hooks/use-appearance';
 import { LucideIcon, Monitor, Moon, Sun } from 'lucide-react';
 import { HTMLAttributes } from 'react';
 

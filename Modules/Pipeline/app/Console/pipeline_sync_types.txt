@@ -1,0 +1,68 @@
+<!-- // Modules/Pipeline/Console/PipelineSyncTypes.php
+
+namespace Modules\Pipeline\Console;
+
+use Illuminate\Console\Command;
+use Modules\Pipeline\Services\TypeConfigService;
+
+class PipelineSyncTypes extends Command
+{
+/**
+* The name and signature of the console command.
+*/
+protected $signature = 'pipeline:sync-types {--verify : Verify model classes exist}';
+
+/**
+* The console command description.
+*/
+protected $description = 'Sync pipeline types configuration and verify models';
+
+/**
+* Execute the console command.
+*/
+public function handle(TypeConfigService $service)
+{
+$this->info('Syncing pipeline types...');
+
+$service->syncTypes();
+
+$this->info('✓ Types synchronized');
+
+if ($this->option('verify')) {
+$this->verifyModelClasses($service);
+}
+
+$this->info('Done!');
+}
+
+protected function verifyModelClasses(TypeConfigService $service)
+{
+$this->info("\nVerifying model classes:");
+
+$types = $service->getTypes();
+
+foreach ($types as $name => $config) {
+$typeModel = \Modules\Pipeline\Models\PipelineType::where('name', $name)->first();
+
+if (!$typeModel) {
+$this->error("✗ Type '{$name}' not found in database");
+continue;
+}
+
+$modelInstance = $typeModel->getModelInstance();
+
+if ($modelInstance) {
+$this->info("✓ {$name}: " . get_class($modelInstance));
+} else {
+$this->warn("⚠ {$name}: Model not found");
+
+// Suggest possible model classes
+$singularName = \Illuminate\Support\Str::singular(ucfirst($name));
+$this->line(" Suggested locations:");
+$this->line(" - Modules\\{$singularName}\\Models\\{$singularName}");
+$this->line(" - Modules\\{$singularName}\\Entities\\{$singularName}");
+$this->line(" - App\\Models\\{$singularName}");
+}
+}
+}
+} -->

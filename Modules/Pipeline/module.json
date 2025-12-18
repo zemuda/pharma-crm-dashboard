@@ -1,0 +1,11 @@
+{
+    "name": "Pipeline",
+    "alias": "pipeline",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Pipeline\\Providers\\PipelineServiceProvider"
+    ],
+    "files": []
+}

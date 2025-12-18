@@ -14,7 +14,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Starter/Starter');
+        return Inertia::render('crm/contacts/list');
     }
 
     /**

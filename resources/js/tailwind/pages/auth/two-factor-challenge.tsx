@@ -1,14 +1,14 @@
 import { store } from '@/routes/two-factor/login';
-import InputError from '@/tailwind/components/input-error';
-import { Button } from '@/tailwind/components/ui/button';
-import { Input } from '@/tailwind/components/ui/input';
-import {
-    InputOTP,
-    InputOTPGroup,
-    InputOTPSlot,
-} from '@/tailwind/components/ui/input-otp';
-import { OTP_MAX_LENGTH } from '@/tailwind/hooks/use-two-factor-auth';
 import AuthLayout from '@/tailwind/layouts/auth-layout';
+import InputError from '@/tiptap_editor/components/input-error';
+import { Button } from '@/tiptap_editor/components/ui/button';
+import { Input } from '@/tiptap_editor/components/ui/input';
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from '@/tiptap_editor/components/ui/input-otp';
+import { OTP_MAX_LENGTH } from '@/tiptap_editor/hooks/use-two-factor-auth';
 import { Form, Head } from '@inertiajs/react';
 import { REGEXP_ONLY_DIGITS } from 'input-otp';
 import { useMemo, useState } from 'react';

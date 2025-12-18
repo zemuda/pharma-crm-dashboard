@@ -5,14 +5,14 @@ import { Transition } from '@headlessui/react';
 import { Form, Head, Link, usePage } from '@inertiajs/react';
 
 import { edit } from '@/routes/profile';
-import DeleteUser from '@/tailwind/components/delete-user';
-import HeadingSmall from '@/tailwind/components/heading-small';
-import InputError from '@/tailwind/components/input-error';
-import { Button } from '@/tailwind/components/ui/button';
-import { Input } from '@/tailwind/components/ui/input';
-import { Label } from '@/tailwind/components/ui/label';
 import AppLayout from '@/tailwind/layouts/app-layout';
 import SettingsLayout from '@/tailwind/layouts/settings/layout';
+import DeleteUser from '@/tiptap_editor/components/delete-user';
+import HeadingSmall from '@/tiptap_editor/components/heading-small';
+import InputError from '@/tiptap_editor/components/input-error';
+import { Button } from '@/tiptap_editor/components/ui/button';
+import { Input } from '@/tiptap_editor/components/ui/input';
+import { Label } from '@/tiptap_editor/components/ui/label';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {

@@ -1,20 +1,20 @@
 import { confirm } from '@/routes/two-factor';
-import InputError from '@/tailwind/components/input-error';
-import { Button } from '@/tailwind/components/ui/button';
+import InputError from '@/tiptap_editor/components/input-error';
+import { Button } from '@/tiptap_editor/components/ui/button';
 import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-} from '@/tailwind/components/ui/dialog';
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/tiptap_editor/components/ui/dialog';
 import {
-    InputOTP,
-    InputOTPGroup,
-    InputOTPSlot,
-} from '@/tailwind/components/ui/input-otp';
-import { useClipboard } from '@/tailwind/hooks/use-clipboard';
-import { OTP_MAX_LENGTH } from '@/tailwind/hooks/use-two-factor-auth';
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from '@/tiptap_editor/components/ui/input-otp';
+import { useClipboard } from '@/tiptap_editor/hooks/use-clipboard';
+import { OTP_MAX_LENGTH } from '@/tiptap_editor/hooks/use-two-factor-auth';
 import { Form } from '@inertiajs/react';
 import { REGEXP_ONLY_DIGITS } from 'input-otp';
 import { Check, Copy, Loader2, ScanLine } from 'lucide-react';

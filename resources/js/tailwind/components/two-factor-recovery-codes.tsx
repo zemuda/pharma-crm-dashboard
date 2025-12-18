@@ -1,12 +1,12 @@
 import { regenerateRecoveryCodes } from '@/routes/two-factor';
-import { Button } from '@/tailwind/components/ui/button';
+import { Button } from '@/tiptap_editor/components/ui/button';
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from '@/tailwind/components/ui/card';
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/tiptap_editor/components/ui/card';
 import { Form } from '@inertiajs/react';
 import { Eye, EyeOff, LockKeyhole, RefreshCw } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';

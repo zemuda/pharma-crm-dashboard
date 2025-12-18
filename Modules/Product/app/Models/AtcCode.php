@@ -4,15 +4,15 @@ namespace Modules\Product\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Core\Enums\ActiveStatus;
-// use Modules\Products\Database\Factories\AtcCodeFactory;
 use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
 class AtcCode extends Model
 {
-    use HasFactory, HasRecursiveRelationships, HasSlug;
+    use HasFactory, HasRecursiveRelationships, HasSlug, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -25,10 +25,18 @@ class AtcCode extends Model
         'slug',
         'info',
         'status',
+        '_lft',
+        '_rgt',
+        'who_guidelines',
+        'therapeutic_uses',
+        'contraindications',
+        'meta',
+        'sort_order',
     ];
 
     protected $casts = [
-        'status' => ActiveStatus::class
+        'status' => ActiveStatus::class,
+        'meta' => 'array',
     ];
 
     /**
@@ -37,16 +45,14 @@ class AtcCode extends Model
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('name')
+            ->generateSlugsFrom(fn($model) => $model->code . '-' . $model->name)
             ->saveSlugsTo('slug');
     }
 
     /**
      * Get the route key for the model.
-     *
-     * @return string
      */
-    public function getRouteKeyName()
+    public function getRouteKeyName(): string
     {
         return 'slug';
     }
@@ -61,8 +67,39 @@ class AtcCode extends Model
         );
     }
 
-    // protected static function newFactory(): AtcCodeFactory
-    // {
-    //     // return AtcCodeFactory::new();
-    // }
+    /**
+     * Scope for active ATC codes
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('status', ActiveStatus::Active);
+    }
+
+    /**
+     * Scope for specific level
+     */
+    public function scopeLevel($query, $level)
+    {
+        return $query->where('level', $level);
+    }
+
+    /**
+     * Get full ATC code path
+     */
+    public function getFullCodeAttribute(): string
+    {
+        $ancestors = $this->ancestors()->pluck('code')->toArray();
+        $ancestors[] = $this->code;
+        return implode(' > ', $ancestors);
+    }
+
+    /**
+     * Get full ATC name path
+     */
+    public function getFullNameAttribute(): string
+    {
+        $ancestors = $this->ancestors()->pluck('name')->toArray();
+        $ancestors[] = $this->name;
+        return implode(' > ', $ancestors);
+    }
 }

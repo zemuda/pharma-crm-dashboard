@@ -1,0 +1,22 @@
+<?php
+
+namespace Modules\Pipeline\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+// use Modules\Pipeline\Database\Factories\PipelineStageFactory;
+
+class PipelineStage extends Model
+{
+    use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     */
+    protected $fillable = [];
+
+    // protected static function newFactory(): PipelineStageFactory
+    // {
+    //     // return PipelineStageFactory::new();
+    // }
+}

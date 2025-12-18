@@ -1,4 +1,4 @@
-import { SidebarInset } from '@/tailwind/components/ui/sidebar';
+import { SidebarInset } from '@/tiptap_editor/components/ui/sidebar';
 import * as React from 'react';
 
 interface AppContentProps extends React.ComponentProps<'main'> {

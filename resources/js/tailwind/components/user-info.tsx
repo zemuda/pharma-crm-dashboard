@@ -1,10 +1,10 @@
-import {
-    Avatar,
-    AvatarFallback,
-    AvatarImage,
-} from '@/tailwind/components/ui/avatar';
-import { useInitials } from '@/tailwind/hooks/use-initials';
 import { type User } from '@/tailwind/types';
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from '@/tiptap_editor/components/ui/avatar';
+import { useInitials } from '@/tiptap_editor/hooks/use-initials';
 
 export function UserInfo({
     user,

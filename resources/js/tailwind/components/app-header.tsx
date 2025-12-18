@@ -1,44 +1,44 @@
 import { dashboard } from '@/routes';
-import { Breadcrumbs } from '@/tailwind/components/breadcrumbs';
-import { Icon } from '@/tailwind/components/icon';
-import {
-    Avatar,
-    AvatarFallback,
-    AvatarImage,
-} from '@/tailwind/components/ui/avatar';
-import { Button } from '@/tailwind/components/ui/button';
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuTrigger,
-} from '@/tailwind/components/ui/dropdown-menu';
-import {
-    NavigationMenu,
-    NavigationMenuItem,
-    NavigationMenuList,
-    navigationMenuTriggerStyle,
-} from '@/tailwind/components/ui/navigation-menu';
-import {
-    Sheet,
-    SheetContent,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-} from '@/tailwind/components/ui/sheet';
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from '@/tailwind/components/ui/tooltip';
-import { UserMenuContent } from '@/tailwind/components/user-menu-content';
-import { useInitials } from '@/tailwind/hooks/use-initials';
 import { cn } from '@/tailwind/lib/utils';
 import {
-    type BreadcrumbItem,
-    type NavItem,
-    type SharedData,
+  type BreadcrumbItem,
+  type NavItem,
+  type SharedData,
 } from '@/tailwind/types';
+import { Breadcrumbs } from '@/tiptap_editor/components/breadcrumbs';
+import { Icon } from '@/tiptap_editor/components/icon';
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from '@/tiptap_editor/components/ui/avatar';
+import { Button } from '@/tiptap_editor/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from '@/tiptap_editor/components/ui/dropdown-menu';
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from '@/tiptap_editor/components/ui/navigation-menu';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/tiptap_editor/components/ui/sheet';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/tiptap_editor/components/ui/tooltip';
+import { UserMenuContent } from '@/tiptap_editor/components/user-menu-content';
+import { useInitials } from '@/tiptap_editor/hooks/use-initials';
 import { Link, usePage } from '@inertiajs/react';
 import { BookOpen, Folder, LayoutGrid, Menu, Search } from 'lucide-react';
 import AppLogo from './app-logo';

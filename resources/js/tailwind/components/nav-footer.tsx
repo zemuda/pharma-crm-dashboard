@@ -1,12 +1,12 @@
-import { Icon } from '@/tailwind/components/icon';
-import {
-    SidebarGroup,
-    SidebarGroupContent,
-    SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
-} from '@/tailwind/components/ui/sidebar';
 import { type NavItem } from '@/tailwind/types';
+import { Icon } from '@/tiptap_editor/components/icon';
+import {
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from '@/tiptap_editor/components/ui/sidebar';
 import { type ComponentPropsWithoutRef } from 'react';
 
 export function NavFooter({

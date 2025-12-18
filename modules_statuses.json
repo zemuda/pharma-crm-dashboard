@@ -9,5 +9,8 @@
     "Notes": true,
     "Products": false,
     "Core": true,
-    "Product": true
+    "Product": true,
+    "CRM": true,
+    "Deal": true,
+    "Pipeline": true
 }

@@ -1,6 +1,6 @@
-import { Breadcrumbs } from '@/tailwind/components/breadcrumbs';
-import { SidebarTrigger } from '@/tailwind/components/ui/sidebar';
 import { type BreadcrumbItem as BreadcrumbItemType } from '@/tailwind/types';
+import { Breadcrumbs } from '@/tiptap_editor/components/breadcrumbs';
+import { SidebarTrigger } from '@/tiptap_editor/components/ui/sidebar';
 
 export function AppSidebarHeader({
     breadcrumbs = [],

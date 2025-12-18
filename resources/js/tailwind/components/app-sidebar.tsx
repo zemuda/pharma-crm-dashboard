@@ -1,17 +1,17 @@
 import { dashboard } from '@/routes';
-import { NavFooter } from '@/tailwind/components/nav-footer';
-import { NavMain } from '@/tailwind/components/nav-main';
-import { NavUser } from '@/tailwind/components/nav-user';
-import {
-    Sidebar,
-    SidebarContent,
-    SidebarFooter,
-    SidebarHeader,
-    SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
-} from '@/tailwind/components/ui/sidebar';
 import { type NavItem } from '@/tailwind/types';
+import { NavFooter } from '@/tiptap_editor/components/nav-footer';
+import { NavMain } from '@/tiptap_editor/components/nav-main';
+import { NavUser } from '@/tiptap_editor/components/nav-user';
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from '@/tiptap_editor/components/ui/sidebar';
 import { Link } from '@inertiajs/react';
 import { BookOpen, Contact, Folder, LayoutGrid } from 'lucide-react';
 import AppLogo from './app-logo';

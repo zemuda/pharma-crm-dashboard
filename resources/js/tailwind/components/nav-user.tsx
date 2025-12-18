@@ -1,18 +1,18 @@
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuTrigger,
-} from '@/tailwind/components/ui/dropdown-menu';
-import {
-    SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
-    useSidebar,
-} from '@/tailwind/components/ui/sidebar';
-import { UserInfo } from '@/tailwind/components/user-info';
-import { UserMenuContent } from '@/tailwind/components/user-menu-content';
-import { useIsMobile } from '@/tailwind/hooks/use-mobile';
 import { type SharedData } from '@/tailwind/types';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from '@/tiptap_editor/components/ui/dropdown-menu';
+import {
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  useSidebar,
+} from '@/tiptap_editor/components/ui/sidebar';
+import { UserInfo } from '@/tiptap_editor/components/user-info';
+import { UserMenuContent } from '@/tiptap_editor/components/user-menu-content';
+import { useIsMobile } from '@/tiptap_editor/hooks/use-mobile';
 import { usePage } from '@inertiajs/react';
 import { ChevronsUpDown } from 'lucide-react';
 

@@ -1,8 +1,8 @@
 import {
-    Alert,
-    AlertDescription,
-    AlertTitle,
-} from '@/tailwind/components/ui/alert';
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from '@/tiptap_editor/components/ui/alert';
 import { AlertCircleIcon } from 'lucide-react';
 
 export default function AlertError({

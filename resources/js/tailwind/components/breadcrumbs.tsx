@@ -1,12 +1,12 @@
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-} from '@/tailwind/components/ui/breadcrumb';
 import { type BreadcrumbItem as BreadcrumbItemType } from '@/tailwind/types';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/tiptap_editor/components/ui/breadcrumb';
 import { Link } from '@inertiajs/react';
 import { Fragment } from 'react';
 

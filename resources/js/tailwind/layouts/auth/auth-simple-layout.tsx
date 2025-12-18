@@ -1,5 +1,5 @@
 import { home } from '@/routes';
-import AppLogoIcon from '@/tailwind/components/app-logo-icon';
+import AppLogoIcon from '@/tiptap_editor/components/app-logo-icon';
 import { Link } from '@inertiajs/react';
 import { type PropsWithChildren } from 'react';
 

@@ -4,6 +4,7 @@ namespace Modules\Leads\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class LeadsController extends Controller
 {
@@ -12,7 +13,7 @@ class LeadsController extends Controller
      */
     public function index()
     {
-        return view('leads::index');
+        return Inertia::render('crm/leads/list');
     }
 
     /**
@@ -20,7 +21,7 @@ class LeadsController extends Controller
      */
     public function create()
     {
-        return view('leads::create');
+        return Inertia::render('crm/leads/create');
     }
 
     /**

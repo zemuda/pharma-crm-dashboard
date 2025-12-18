@@ -1,6 +1,6 @@
 import { home } from '@/routes';
-import AppLogoIcon from '@/tailwind/components/app-logo-icon';
 import { type SharedData } from '@/tailwind/types';
+import AppLogoIcon from '@/tiptap_editor/components/app-logo-icon';
 import { Link, usePage } from '@inertiajs/react';
 import { type PropsWithChildren } from 'react';
 

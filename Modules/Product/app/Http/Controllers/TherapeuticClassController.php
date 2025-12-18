@@ -13,7 +13,7 @@ class TherapeuticClassController extends Controller
      */
     public function index()
     {
-        return Inertia::render('IMS/ims-list-therapeutic-classes');
+        return Inertia::render('ims/therapeutic-classes/list');
     }
 
     /**
@@ -21,7 +21,7 @@ class TherapeuticClassController extends Controller
      */
     public function create()
     {
-        return Inertia::render('IMS/ims-create-therapeutic-classes');
+        return Inertia::render('ims/therapeutic-classes/create');
     }
 
     /**

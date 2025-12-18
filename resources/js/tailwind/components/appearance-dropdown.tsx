@@ -1,11 +1,11 @@
-import { Button } from '@/tailwind/components/ui/button';
+import { Button } from '@/tiptap_editor/components/ui/button';
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
-} from '@/tailwind/components/ui/dropdown-menu';
-import { useAppearance } from '@/tailwind/hooks/use-appearance';
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/tiptap_editor/components/ui/dropdown-menu';
+import { useAppearance } from '@/tiptap_editor/hooks/use-appearance';
 import { Monitor, Moon, Sun } from 'lucide-react';
 import { HTMLAttributes } from 'react';
 

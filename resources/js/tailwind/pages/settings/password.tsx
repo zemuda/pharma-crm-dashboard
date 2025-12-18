@@ -1,17 +1,17 @@
 import PasswordController from '@/actions/App/Http/Controllers/Settings/PasswordController';
-import InputError from '@/tailwind/components/input-error';
 import AppLayout from '@/tailwind/layouts/app-layout';
 import SettingsLayout from '@/tailwind/layouts/settings/layout';
 import { type BreadcrumbItem } from '@/tailwind/types';
+import InputError from '@/tiptap_editor/components/input-error';
 import { Transition } from '@headlessui/react';
 import { Form, Head } from '@inertiajs/react';
 import { useRef } from 'react';
 
 import { edit } from '@/routes/password';
-import HeadingSmall from '@/tailwind/components/heading-small';
-import { Button } from '@/tailwind/components/ui/button';
-import { Input } from '@/tailwind/components/ui/input';
-import { Label } from '@/tailwind/components/ui/label';
+import HeadingSmall from '@/tiptap_editor/components/heading-small';
+import { Button } from '@/tiptap_editor/components/ui/button';
+import { Input } from '@/tiptap_editor/components/ui/input';
+import { Label } from '@/tiptap_editor/components/ui/label';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {

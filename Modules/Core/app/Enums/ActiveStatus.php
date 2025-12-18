@@ -59,6 +59,17 @@ enum ActiveStatus: string implements Arrayable, JsonSerializable
         return in_array($this, [self::Active, self::Pending]);
     }
 
+    public static function activeStates(): array
+    {
+        return [self::Active, self::Pending];
+    }
+
+    public static function disabledStates(): array
+    {
+        return [self::Inactive, self::Discontinued, self::Archived];
+    }
+
+
     public static function forSelect(): array
     {
         return array_map(fn($case) => [

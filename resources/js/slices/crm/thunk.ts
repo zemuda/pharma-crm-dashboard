@@ -1,8 +1,8 @@
 
+import { companies, crmcontacts, deals } from "@/common/data";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addNewCompanies, addNewContact, addNewLead, deleteCompanies, deleteContact, deleteLead, getCompanies, getContacts, getDeals, getLeads, updateCompanies, updateContact, updateLead } from "./reducer";
-import { companies, crmcontacts, deals, leads } from "../../common/data";
+import { addNewCompanies, addNewContact, addNewLead, deleteCompanies, deleteContact, deleteLead, getCompanies, getContacts, getDeals, updateCompanies, updateContact, updateLead } from "./reducer";
 
 // companies
 export const onGetCompanies = () => async (dispatch: any) => {
@@ -102,13 +102,13 @@ export const onGetDeals = () => async (dispatch: any) => {
 
 // leads
 
-export const onGetLeads = () => async (dispatch: any) => {
-  try {
-    dispatch(getLeads(leads));
-  } catch (error) {
-    return error;
-  }
-}
+// export const onGetLeads = () => async (dispatch: any) => {
+//   try {
+//     dispatch(getLeads(leads));
+//   } catch (error) {
+//     return error;
+//   }
+// }
 
 export const onAddNewLead = (data:any) => async (dispatch: any) => {
   try {

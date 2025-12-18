@@ -4,6 +4,7 @@ use App\Http\Controllers\Crm\ContactController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Modules\Core\Http\Controllers\MeasurementUnitController;
+use Modules\Product\Http\Controllers\AtcCodeController;
 // ims (Inventory Management System)
 use Modules\Product\Http\Controllers\MedicineController;
 use Modules\Product\Http\Controllers\ProductController;
@@ -19,13 +20,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 
     Route::prefix('crm')->group(function () {
-        Route::resource('contacts', ContactController::class)->names('crm.contact');
+        Route::resource('contacts', ContactController::class)->names('crm.contacts');
     });
 
     Route::prefix('ims')->group(function () {
-        Route::resource('products', ProductController::class)->names('ims.product');
-        Route::resource('medicines', MedicineController::class)->names('ims.medicine');
-        Route::resource('therapeutic-classes', TherapeuticClassController::class)->names('ims.therapeutic-class');
+        Route::resource('products', ProductController::class)->names('ims.products');
+        Route::resource('medicines', MedicineController::class)->names('ims.medicines');
+        Route::resource('therapeutic-classes', TherapeuticClassController::class)->names('ims.therapeutic-classes');
+        Route::resource('atc-codes', AtcCodeController::class)->names('ims.atc-codes');
     });
 
     Route::prefix('measurement-units')->group(function () {

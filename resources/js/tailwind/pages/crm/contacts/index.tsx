@@ -1,7 +1,7 @@
-import { Input } from '@/tailwind/components/ui/input';
-import { Label } from '@/tailwind/components/ui/label';
 import AppLayout from '@/tailwind/layouts/app-layout';
 import { type BreadcrumbItem } from '@/tailwind/types';
+import { Input } from '@/tiptap_editor/components/ui/input';
+import { Label } from '@/tiptap_editor/components/ui/label';
 import { Head } from '@inertiajs/react';
 
 const breadcrumbs: BreadcrumbItem[] = [

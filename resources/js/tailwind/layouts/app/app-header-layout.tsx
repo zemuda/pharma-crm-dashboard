@@ -1,7 +1,7 @@
-import { AppContent } from '@/tailwind/components/app-content';
-import { AppHeader } from '@/tailwind/components/app-header';
-import { AppShell } from '@/tailwind/components/app-shell';
 import { type BreadcrumbItem } from '@/tailwind/types';
+import { AppContent } from '@/tiptap_editor/components/app-content';
+import { AppHeader } from '@/tiptap_editor/components/app-header';
+import { AppShell } from '@/tiptap_editor/components/app-shell';
 import type { PropsWithChildren } from 'react';
 
 export default function AppHeaderLayout({

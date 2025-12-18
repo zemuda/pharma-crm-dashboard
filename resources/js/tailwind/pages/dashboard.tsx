@@ -1,7 +1,7 @@
-import { PlaceholderPattern } from '@/tailwind/components/ui/placeholder-pattern';
 import AppLayout from '@/tailwind/layouts/app-layout';
 import { dashboard } from '@/tailwind/routes';
 import { type BreadcrumbItem } from '@/tailwind/types';
+import { PlaceholderPattern } from '@/tiptap_editor/components/ui/placeholder-pattern';
 import { Head } from '@inertiajs/react';
 
 const breadcrumbs: BreadcrumbItem[] = [

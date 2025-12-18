@@ -1,12 +1,12 @@
 import { home } from '@/routes';
-import AppLogoIcon from '@/tailwind/components/app-logo-icon';
+import AppLogoIcon from '@/tiptap_editor/components/app-logo-icon';
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from '@/tailwind/components/ui/card';
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/tiptap_editor/components/ui/card';
 import { Link } from '@inertiajs/react';
 import { type PropsWithChildren } from 'react';
 

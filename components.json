@@ -13,7 +13,7 @@
     "aliases": {
         "components": "@/tailwind/components",
         "utils": "@/tailwind/lib/utils",
-        "ui": "@/tailwind/components/ui",
+        "ui": "@/tiptap_editor/components/ui",
         "lib": "@/tailwind/lib",
         "hooks": "@/tailwind/hooks"
     },

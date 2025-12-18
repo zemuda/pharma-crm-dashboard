@@ -1,0 +1,161 @@
+<?php
+
+namespace Modules\Pipeline\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
+
+// use Modules\Pipeline\Database\Factories\PipelineTypeFactory;
+
+class PipelineType extends Model
+{
+    use HasFactory, SoftDeletes;
+
+    /**
+     * The attributes that are mass assignable.
+     */
+    protected $fillable = [
+        'name',
+        'display_name',
+        'model_class',
+        'table_name',
+        'foreign_key',
+        'route_key',
+        'is_active',
+        'has_probability',
+        'has_value',
+        'has_due_date',
+        'has_priority',
+        'custom_fields',
+        'validations',
+        'default_stages',
+        'order',
+        'icon',
+        'color',
+        'meta',
+    ];
+
+    protected $casts = [
+        'is_active' => 'boolean',
+        'has_probability' => 'boolean',
+        'has_value' => 'boolean',
+        'has_due_date' => 'boolean',
+        'has_priority' => 'boolean',
+        'custom_fields' => 'array',
+        'validations' => 'array',
+        'default_stages' => 'array',
+        'meta' => 'array',
+    ];
+
+    public function pipelines()
+    {
+        return $this->belongsToMany(Pipeline::class, 'pipeline_type_associations')
+            ->withPivot(['is_default', 'settings'])
+            ->withTimestamps();
+    }
+
+    public function getDefaultPipeline()
+    {
+        return $this->pipelines()
+            ->wherePivot('is_default', true)
+            ->first();
+    }
+
+    public function getTableNameAttribute($value)
+    {
+        return $value ?? $this->name . '_pipeline';
+    }
+
+    public function getForeignKeyAttribute($value)
+    {
+        return $value ?? $this->name . '_id';
+    }
+
+    public function getRouteKeyAttribute($value)
+    {
+        return $value ?? $this->name . 's';
+    }
+
+    public function getModelInstance()
+    {
+        // 1. Check if the explicit model class exists (highest priority)
+        if ($this->model_class && class_exists($this->model_class)) {
+            return app($this->model_class);
+        }
+
+        // Convert 'deals' to 'Deal' (singular, capitalized)
+        $singularName = Str::singular(ucfirst($this->name));
+
+        // 2. Try multiple naming conventions for modular models
+        $possibleModuleClasses = [
+            // Modules\Deal\Models\Deal
+            'Modules\\' . $singularName . '\\Models\\' . $singularName,
+            // Modules\Deal\Entities\Deal
+            'Modules\\' . $singularName . '\\Entities\\' . $singularName,
+            // Modules\Deals\Models\Deal (if module name is plural)
+            'Modules\\' . Str::plural($singularName) . '\\Models\\' . $singularName,
+            // Modules\Deals\Entities\Deal
+            'Modules\\' . Str::plural($singularName) . '\\Entities\\' . $singularName,
+        ];
+
+        foreach ($possibleModuleClasses as $moduleClass) {
+            if (class_exists($moduleClass)) {
+                return app($moduleClass);
+            }
+        }
+
+        // 3. Try App namespace with different conventions
+        $possibleAppClasses = [
+            // App\Models\Deal
+            'App\\Models\\' . $singularName,
+            // App\Entities\Deal
+            'App\\Entities\\' . $singularName,
+            // App\Deal (if model is directly in App namespace)
+            'App\\' . $singularName,
+        ];
+
+        foreach ($possibleAppClasses as $appClass) {
+            if (class_exists($appClass)) {
+                return app($appClass);
+            }
+        }
+
+        // 4. Log warning for debugging
+        \Log::warning("PipelineType: Could not find model for type '{$this->name}'", [
+            'type_name' => $this->name,
+            'model_class' => $this->model_class,
+        ]);
+
+        return null;
+    }
+
+    public function getModelQuery()
+    {
+        $instance = $this->getModelInstance();
+
+        if (!$instance) {
+            // Return a dummy query builder that won't execute
+            return \DB::table('dummy')->whereRaw('1 = 0');
+        }
+
+        return $instance->newQuery();
+    }
+
+    public function findEntity($id)
+    {
+        $instance = $this->getModelInstance();
+
+        if (!$instance) {
+            return null;
+        }
+
+        return $instance->find($id);
+    }
+
+    // protected static function newFactory(): PipelineTypeFactory
+    // {
+    //     // return PipelineTypeFactory::new();
+    // }
+}

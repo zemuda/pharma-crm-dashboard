@@ -1,5 +1,5 @@
-import { SidebarProvider } from '@/tailwind/components/ui/sidebar';
 import { SharedData } from '@/tailwind/types';
+import { SidebarProvider } from '@/tiptap_editor/components/ui/sidebar';
 import { usePage } from '@inertiajs/react';
 
 interface AppShellProps {

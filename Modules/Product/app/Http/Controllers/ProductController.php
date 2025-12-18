@@ -13,7 +13,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Inertia::render('IMS/ims-list-products');
+        return Inertia::render('ims/products/list');
     }
 
     /**

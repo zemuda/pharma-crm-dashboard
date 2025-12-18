@@ -1,8 +1,8 @@
-import { AppContent } from '@/tailwind/components/app-content';
-import { AppShell } from '@/tailwind/components/app-shell';
-import { AppSidebar } from '@/tailwind/components/app-sidebar';
-import { AppSidebarHeader } from '@/tailwind/components/app-sidebar-header';
 import { type BreadcrumbItem } from '@/tailwind/types';
+import { AppContent } from '@/tiptap_editor/components/app-content';
+import { AppShell } from '@/tiptap_editor/components/app-shell';
+import { AppSidebar } from '@/tiptap_editor/components/app-sidebar';
+import { AppSidebarHeader } from '@/tiptap_editor/components/app-sidebar-header';
 import { type PropsWithChildren } from 'react';
 
 export default function AppSidebarLayout({

@@ -1,8 +1,8 @@
 import { Head } from '@inertiajs/react';
 
-import AppearanceTabs from '@/tailwind/components/appearance-tabs';
-import HeadingSmall from '@/tailwind/components/heading-small';
 import { type BreadcrumbItem } from '@/tailwind/types';
+import AppearanceTabs from '@/tiptap_editor/components/appearance-tabs';
+import HeadingSmall from '@/tiptap_editor/components/heading-small';
 
 import { edit as editAppearance } from '@/routes/appearance';
 import AppLayout from '@/tailwind/layouts/app-layout';

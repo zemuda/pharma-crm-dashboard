@@ -1,0 +1,133 @@
+<?php
+// Modules/Pipeline/Traits/HasPipeline.php
+
+namespace Modules\Pipeline\Traits;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Modules\Pipeline\Models\Pipeline;
+use Modules\Pipeline\Models\PipelineStage;
+use Modules\Pipeline\Services\TypeConfigService;
+
+trait HasPipeline
+{
+    protected static function bootHasPipeline()
+    {
+        static::created(function ($model) {
+            // Auto-assign to default pipeline when entity is created
+            $model->assignToDefaultPipeline();
+        });
+    }
+
+    public function pipelines()
+    {
+        $typeName = $this->getPipelineTypeName();
+        $config = app(TypeConfigService::class)->getType($typeName);
+
+        if (!$config) {
+            return $this->belongsToMany(Pipeline::class, 'invalid_table');
+        }
+
+        return $this->belongsToMany(Pipeline::class, $config['table_name'])
+            ->withPivot('pipeline_stage_id')
+            ->withTimestamps();
+    }
+
+    public function pipelineStages()
+    {
+        $typeName = $this->getPipelineTypeName();
+        $config = app(TypeConfigService::class)->getType($typeName);
+
+        if (!$config) {
+            return $this->belongsToMany(PipelineStage::class, 'invalid_table');
+        }
+
+        return $this->belongsToMany(PipelineStage::class, $config['table_name'])
+            ->withTimestamps();
+    }
+
+    public function currentPipeline()
+    {
+        return $this->pipelines()->latest()->first();
+    }
+
+    public function currentStage()
+    {
+        $pipeline = $this->currentPipeline();
+        if ($pipeline) {
+            return $pipeline->pivot->pipelineStage ?? null;
+        }
+        return null;
+    }
+
+    public function moveToPipeline($pipelineId, $stageId = null)
+    {
+        $typeName = $this->getPipelineTypeName();
+        $pipeline = Pipeline::findOrFail($pipelineId);
+
+        if (!$stageId) {
+            $stageId = $pipeline->stages()->orderBy('order')->first()->id;
+        }
+
+        $config = app(TypeConfigService::class)->getType($typeName);
+
+        DB::table($config['table_name'])->updateOrInsert(
+            [
+                $config['foreign_key'] => $this->id,
+                'pipeline_id' => $pipelineId,
+            ],
+            [
+                'pipeline_stage_id' => $stageId,
+                'updated_at' => now(),
+                'created_at' => DB::raw('IFNULL(created_at, NOW())'),
+            ]
+        );
+
+        $this->load('pipelines');
+
+        return $this;
+    }
+
+    public function moveToStage($stageId)
+    {
+        $currentPipeline = $this->currentPipeline();
+
+        if ($currentPipeline) {
+            $typeName = $this->getPipelineTypeName();
+            $config = app(TypeConfigService::class)->getType($typeName);
+
+            DB::table($config['table_name'])
+                ->where($config['foreign_key'], $this->id)
+                ->where('pipeline_id', $currentPipeline->id)
+                ->update([
+                    'pipeline_stage_id' => $stageId,
+                    'updated_at' => now(),
+                ]);
+        }
+
+        $this->load('pipelines');
+
+        return $this;
+    }
+
+    public function assignToDefaultPipeline()
+    {
+        $typeName = $this->getPipelineTypeName();
+        $service = app(TypeConfigService::class);
+
+        $defaultPipeline = $service->getDefaultPipelineForType($typeName);
+
+        if ($defaultPipeline) {
+            $this->moveToPipeline($defaultPipeline->id);
+        }
+
+        return $this;
+    }
+
+    protected function getPipelineTypeName()
+    {
+        // Default: use the model's table name (without 's')
+        // e.g., 'deals' table -> 'deal' type
+        return Str::singular($this->getTable());
+    }
+}
