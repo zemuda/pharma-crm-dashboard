@@ -18,11 +18,25 @@
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
-npm-debug.log
-yarn-error.log
+# npm-debug.log
+# yarn-error.log
 /auth.json
 /.fleet
 /.idea
 /.nova
 /.vscode
 /.zed
+
+# NPM/Yarn/PNPM
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Composer
+composer.lock
+
+# Misc
+*.log
+*.cache
+*.tmp
