@@ -3,7 +3,7 @@
 namespace Modules\Core\Services;
 
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Cache;
+// use Illuminate\Support\Facades\Cache;
 use InvalidArgumentException;
 
 // class MeasurementUnitService
@@ -151,12 +151,12 @@ class MeasurementUnitService
         ],
     ];
 
-    public static function all(): Collection
-    {
-        return Cache::remember('pharmacy_units', 3600, function () {
-            return collect(self::$units)->keyBy('abbreviation');
-        });
-    }
+    // public static function all(): Collection
+    // {
+    //     return Cache::remember('pharmacy_units', 3600, function () {
+    //         return collect(self::$units)->keyBy('abbreviation');
+    //     });
+    // }
 
     public static function findByAbbreviation(string $abbreviation): ?array
     {
@@ -222,23 +222,23 @@ class MeasurementUnitService
         return round($converted, $finalPrecision);
     }
 
-    public static function addCustomUnit(array $unit): void
-    {
-        // Validate required fields
-        $required = ['abbreviation', 'name', 'conversion_to_base', 'base_unit', 'category'];
-        foreach ($required as $field) {
-            if (!isset($unit[$field])) {
-                throw new InvalidArgumentException("Missing required field: {$field}");
-            }
-        }
+    // public static function addCustomUnit(array $unit): void
+    // {
+    //     // Validate required fields
+    //     $required = ['abbreviation', 'name', 'conversion_to_base', 'base_unit', 'category'];
+    //     foreach ($required as $field) {
+    //         if (!isset($unit[$field])) {
+    //             throw new InvalidArgumentException("Missing required field: {$field}");
+    //         }
+    //     }
 
-        self::$units[] = array_merge([
-            'is_si_unit' => false,
-            'precision' => 3,
-        ], $unit);
+    //     self::$units[] = array_merge([
+    //         'is_si_unit' => false,
+    //         'precision' => 3,
+    //     ], $unit);
 
-        Cache::forget('pharmacy_units');
-    }
+    //     Cache::forget('pharmacy_units');
+    // }
 
     public static function validateConversion(string $fromUnit, string $toUnit): bool
     {

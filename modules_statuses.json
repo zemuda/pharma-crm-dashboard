@@ -12,5 +12,6 @@
     "Product": true,
     "CRM": true,
     "Deal": true,
-    "Pipeline": true
+    "Pipeline": true,
+    "ERP": true
 }
